@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class ThirdPersonController : MonoBehaviour
 {
-    int IDLE = 0;
-    int ATTACKING = 1;
-    int RETRIEVING = 2;
     private CharacterController controller;
     private GameObject mainCamera;
     private Vector3 playerVelocity;
@@ -18,11 +14,7 @@ public class ThirdPersonController : MonoBehaviour
     private float gravityValue = -18.0f;
     private float sensitivity = 2.0f;
     private float sprintMultiplier = 1.7f;
-    public int swordState;
     private GameObject swordObject;
-    private Quaternion swordIdleRotation;
-    private Quaternion swordEndRotation = Quaternion.Euler(-64.487f, -127.796f, -134.9f);
-    private Vector3 originalPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +24,6 @@ public class ThirdPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         swordObject = GameObject.FindWithTag("Sword");
-        swordIdleRotation = swordObject.transform.rotation;
-        swordState = IDLE;
-        originalPosition = swordObject.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -42,7 +31,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         ProcessMovement();
         ProcessCameraRotation();
-        ProcessAttack();
+        swordObject.GetComponent<Sword>().ProcessAttack();
     }
 
     private void ProcessMovement()
@@ -84,42 +73,5 @@ public class ThirdPersonController : MonoBehaviour
         mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
     }
 
-    private void ProcessAttack()
-    {
-        float zRotation = swordObject.transform.localEulerAngles.z < 0 ? swordObject.transform.localEulerAngles.z + 360 : swordObject.transform.localEulerAngles.z;
-        if (swordState == IDLE)
-        {
-            if (Input.GetAxis("Fire1")  != 0)
-            {
-                swordState = ATTACKING;
-            }
-        }
-        if (swordState == RETRIEVING)
-        {
-            if (zRotation < 35 || zRotation > 225)
-            {
-                swordObject.transform.Rotate(new Vector3(0, 0, 2000) * Time.deltaTime);
-                swordObject.transform.Translate(Vector3.left * 20 * Time.deltaTime);
-            }
-            else
-            {
-                swordObject.transform.localRotation = swordIdleRotation;
-                swordObject.transform.localPosition = originalPosition;
-                swordState = IDLE;
-            }
-        }
-        if (swordState == ATTACKING)
-        {
-            if (zRotation < 35 || zRotation > 225)
-            {
-                swordObject.transform.Rotate(new Vector3(0, 0, -2000) * Time.deltaTime);
-                swordObject.transform.Translate(Vector3.right * 20 * Time.deltaTime);
-            }
-            else
-            {
-                swordObject.transform.localRotation = swordEndRotation;
-                swordState = RETRIEVING;
-            }
-        }
-    }
+    
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GroundCheck
   - Sword
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - Terrain
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
