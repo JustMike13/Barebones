@@ -135,13 +135,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 391c97370904944499d71981b88af4ba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 391c97370904944499d71981b88af4ba, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.035411
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.41
+      value: 1.233
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -192,13 +200,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 391c97370904944499d71981b88af4ba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 391c97370904944499d71981b88af4ba, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.72075
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1.17
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -249,13 +265,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 391c97370904944499d71981b88af4ba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 391c97370904944499d71981b88af4ba, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.95
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.72
+      value: 1.254
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 391c97370904944499d71981b88af4ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -306,13 +330,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.45
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1.256
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -363,13 +395,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NonEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.43
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: 1.209
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -420,13 +460,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.4713
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.94
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 8e1b5740a58d06e44948d89493e141dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -477,13 +525,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NonEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.345829
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.68
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -628,13 +684,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NonEnemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5345373
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.96
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: cd734283677fc8f42b655b63ed495c51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -882,13 +946,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.9002724
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.58
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1008,13 +1080,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy placeholder
       objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044059289299341982, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.79
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 9121534718942713998, guid: 7a0059a835d8bf7409a24b62a7bca414, type: 3}
       propertyPath: m_LocalPosition.z

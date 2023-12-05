@@ -9,12 +9,18 @@ public class ThirdPersonController : MonoBehaviour
     private GameObject mainCamera;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    [SerializeField]
     private float playerSpeed = 10.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -18.0f;
     private float sensitivity = 2.0f;
     private float sprintMultiplier = 1.7f;
-    private GameObject swordObject;
+    [SerializeField] 
+    float speedUpTime = 0.3f;
+    float speedUpTimeElapsed = 0;
+    [SerializeField] 
+    float minSpeedMultiplier = 0.2f;
+    float maxSpeedMultiplier = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +29,6 @@ public class ThirdPersonController : MonoBehaviour
         mainCamera = GameObject.FindWithTag("MainCamera");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        swordObject = GameObject.FindWithTag("Sword");
     }
 
     // Update is called once per frame
@@ -31,7 +36,6 @@ public class ThirdPersonController : MonoBehaviour
     {
         ProcessMovement();
         ProcessCameraRotation();
-        swordObject.GetComponent<Sword>().ProcessAttack();
     }
 
     private void ProcessMovement()
@@ -46,12 +50,27 @@ public class ThirdPersonController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
         float sprint = Input.GetAxis("Shift") > 0 && groundedPlayer ? sprintMultiplier : 1.0f;
 
+        if (moveHorizontal != 0 || moveVertical  != 0)
+        {
+            speedUpTimeElapsed += Time.deltaTime;
+            if (speedUpTimeElapsed > speedUpTime)
+            {
+                speedUpTimeElapsed = speedUpTime;
+            }
+        }
+        else
+        {
+            speedUpTimeElapsed = 0f;
+        }
+
+        float speedMultiplier = Mathf.InverseLerp(0f, speedUpTime, speedUpTimeElapsed);
+        speedMultiplier = Mathf.Clamp(speedMultiplier, minSpeedMultiplier, maxSpeedMultiplier);
 
         //Vector3 move = new Vector3(moveHorizontal, 0, moveVertical);
         if (moveHorizontal != 0 || moveVertical != 0)
         {
-            controller.Move(transform.forward * moveVertical * Time.deltaTime * playerSpeed * sprint);
-            controller.Move(transform.right * moveHorizontal * Time.deltaTime * playerSpeed);
+            controller.Move(transform.forward * moveVertical * Time.deltaTime * playerSpeed * speedMultiplier * sprint);
+            controller.Move(transform.right * moveHorizontal * Time.deltaTime * playerSpeed * speedMultiplier);
         }
 
         // Changes the height position of the player..

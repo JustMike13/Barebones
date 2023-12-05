@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void Damage()
+    public void Damage(int damageTaken = 5)
     {
         Destroy(gameObject);
     }

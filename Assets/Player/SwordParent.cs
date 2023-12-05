@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Sword : MonoBehaviour
+public class SwordParent : MonoBehaviour
 {
-    int IDLE = 0;
-    int ATTACKING = 1;
-    int RETRIEVING = 2;
-    public int swordState;
+    public static int IDLE = 0;
+    public static int ATTACKING = 1;
+    public static int RETRIEVING = 2;
+    int swordState;
+    public int SwordState {  get { return swordState; } }
     private Quaternion swordIdleRotation;
     private Quaternion swordEndRotation = Quaternion.Euler(-64.487f, -127.796f, -134.9f);
     private Vector3 originalPosition;
-    [SerializeField]
-    GameObject HitCollider;
-    private float hitRadius = 1.0f;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +26,7 @@ public class Sword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ProcessAttack();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,32 +38,12 @@ public class Sword : MonoBehaviour
     {
         if (swordState == IDLE)
         {
-            if (Input.GetAxis("Fire1") != 0)
+            if (Input.GetButtonDown("Fire1"))
             {
                 swordState = ATTACKING;
-                ProcessDamage();
             }
         }
         ProcessAnimation();
-    }
-
-    private void ProcessDamage()
-    {
-        Vector3 sphereCenter = HitCollider.transform.position;
-        Collider[] hits = Physics.OverlapSphere(sphereCenter, hitRadius, -1);
-        int hitCount = 0;
-        foreach(Collider collider in hits)
-        {
-            //Debug.Log($"I hit something {collider.gameObject.name}");
-            if (collider.gameObject.GetComponent<Enemy>() != null)
-            {
-                hitCount++;
-                collider.gameObject.GetComponent<Enemy>().Damage();
-                Debug.Log($"I hit  {collider.gameObject.name}");
-            }
-        }
-
-        hits = null;
     }
 
     public void ProcessAnimation()
