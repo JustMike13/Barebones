@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86de0123cb6c5a4fb5f939dd526a926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordDamage: 0
+  swordDamage: 10
 --- !u!54 &4732842438390284673
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 1938433148586158327}
   - component: {fileID: 787291336785941174}
   - component: {fileID: 432214465802765187}
+  - component: {fileID: 2313091951820964326}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -358,6 +359,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767fe537fad592448bc1f8d0cc8916e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 20
+  speedUpTime: 0.5
+  minSpeedMultiplier: 0.2
+--- !u!114 &2313091951820964326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371745166387726416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cac2b66422a074b88f94b7e4aaec87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
 --- !u!1001 &265747292239243329
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,14 +5,14 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     int state;
-    List<Enemy> hitList;
+    List<Health> hitList;
     SwordParent parent;
     [SerializeField]
     int swordDamage = 10;
 
     void Start()
     {
-        hitList = new List<Enemy>();
+        hitList = new List<Health>();
         parent = transform.parent.GetComponent<SwordParent>();
     }
 
@@ -23,9 +23,9 @@ public class SwordAttack : MonoBehaviour
 
         if (state == SwordParent.RETRIEVING)
         {
-            foreach (Enemy enemy in hitList)
+            foreach (Health enemyHealth in hitList)
             {
-                enemy.Damage(swordDamage);
+                enemyHealth.TakeDamage(swordDamage);
             }
             hitList.Clear();
         }
@@ -33,15 +33,15 @@ public class SwordAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy == null) 
+        Health enemyHealth = other.GetComponent<Health>();
+        if (enemyHealth == null) 
         {
             return;
         }
         state = parent.SwordState;
         if (state == SwordParent.ATTACKING)
         {
-            hitList.Add(enemy);
+            hitList.Add(enemyHealth);
         }
     }
 }
