@@ -14,6 +14,7 @@ public class SwordParent : MonoBehaviour
     private Quaternion swordIdleRotation;
     private Quaternion swordEndRotation = Quaternion.Euler(-64.487f, -127.796f, -134.9f);
     private Vector3 originalPosition;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class SwordParent : MonoBehaviour
         swordIdleRotation = transform.rotation;
         swordState = IDLE;
         originalPosition = transform.localPosition;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,10 +42,11 @@ public class SwordParent : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                swordState = ATTACKING;
+                //swordState = ATTACKING;
+                animator.Play("Attack");
             }
         }
-        ProcessAnimation();
+        //ProcessAnimation();
     }
 
     public void ProcessAnimation()
