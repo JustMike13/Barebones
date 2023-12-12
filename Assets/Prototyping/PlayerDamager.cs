@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerDamager : MonoBehaviour
 {
     Health playerHealthObject;
+    ThirdPersonController playerController;
     bool prevValue = false;
+    bool prevValueF = false;
 
     void Start()
     {
         playerHealthObject = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
     }
 
     
@@ -21,5 +24,13 @@ public class PlayerDamager : MonoBehaviour
             playerHealthObject.TakeDamage(10);
         }
         prevValue = currValue;
+
+
+        bool currValueF = Input.GetKeyDown(KeyCode.F);
+        if (currValueF && currValueF != prevValueF)
+        {
+            playerController.GetStunned();
+        }
+        prevValueF = currValueF;
     }
 }

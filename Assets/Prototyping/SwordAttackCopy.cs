@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class SwordAttackCopy : MonoBehaviour
 {
     int IDLE = 0;
     int PARRY = 1;
@@ -10,7 +10,7 @@ public class SwordAttack : MonoBehaviour
     [SerializeField]
     int swordDamage = 10;
     Animator animator;
-    ThirdPersonController controller;
+    ThirdPersonControllerCopy controller;
     bool isBlocking;
     [SerializeField]
     Vector2 parryTimeWindow = new Vector2(0.2f, 1f);
@@ -20,28 +20,32 @@ public class SwordAttack : MonoBehaviour
     private void Start()
     {
         animator = transform.parent.GetComponent<Animator>();
-        controller = transform.parent.parent.GetComponent<ThirdPersonController>();
-        isBlocking = false;
+        controller = transform.parent.parent.GetComponent<ThirdPersonControllerCopy>();
+
+        isBlocking = true;
         timeSinceBlocking = 0;
+        animator.SetBool("IsBlocking", true);
+        timeSinceBlocking = 5;
     }
 
     private void Update()
     {
-        if (animator != null)
-        {
-            if (Input.GetKey(KeyCode.Mouse1) && !controller.IsStunned )
-            {
-                animator.SetBool("IsBlocking", true);
-                isBlocking = true;
-                timeSinceBlocking += Time.deltaTime;
-            }
-            else
-            {
-                animator.SetBool("IsBlocking", false);
-                isBlocking = false;
-                timeSinceBlocking = 0;
-            }
-        }
+        //isBlocking = true;
+        //if (animator != null)
+        //{
+        //    if (Input.GetKey(KeyCode.Mouse1) && !controller.IsStunned )
+        //    {
+        //        animator.SetBool("IsBlocking", true);
+        //        isBlocking = true;
+        //        timeSinceBlocking += Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        animator.SetBool("IsBlocking", false);
+        //        isBlocking = true;
+        //        timeSinceBlocking = 0;
+        //    }
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,7 +73,7 @@ public class SwordAttack : MonoBehaviour
 
     public int Block()
     {
-        if (timeSinceBlocking > parryTimeWindow[0] && timeSinceBlocking < parryTimeWindow[1])
+        if (timeSinceBlocking > parryTimeWindow.x && timeSinceBlocking < parryTimeWindow.y)
         {
             return PARRY;
         }

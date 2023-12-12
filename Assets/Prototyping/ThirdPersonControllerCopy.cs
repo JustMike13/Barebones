@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirdPersonController : MonoBehaviour
+public class ThirdPersonControllerCopy : MonoBehaviour
 {
     private CharacterController controller;
     private GameObject mainCamera;
@@ -21,7 +21,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] 
     float minSpeedMultiplier = 0.2f;
     float maxSpeedMultiplier = 1f;
-    [SerializeField]
+
     bool isStunned;
     public bool IsStunned { get { return isStunned; } }
     Animator animator;
@@ -40,8 +40,8 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessMovement();
-        ProcessCameraRotation();
+        //ProcessMovement();
+        //ProcessCameraRotation();
     }
 
     private void ProcessMovement()
@@ -50,11 +50,6 @@ public class ThirdPersonController : MonoBehaviour
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = -1.0f;
-        }
-
-        if(isStunned)
-        {
-            return;
         }
 
         float moveHorizontal = Input.GetAxis("Horizontal");

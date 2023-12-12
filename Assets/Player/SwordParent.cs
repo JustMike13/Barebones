@@ -15,6 +15,8 @@ public class SwordParent : MonoBehaviour
     private Quaternion swordEndRotation = Quaternion.Euler(-64.487f, -127.796f, -134.9f);
     private Vector3 originalPosition;
     private Animator animator;
+    [SerializeField]
+    bool controllable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,7 @@ public class SwordParent : MonoBehaviour
     {
         if (swordState == IDLE)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && controllable)
             {
                 //swordState = ATTACKING;
                 animator.Play("Attack");
