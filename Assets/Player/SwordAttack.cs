@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
-    int IDLE = 0;
-    int PARRY = 1;
-    int BLOCK = 2;
+    const int IDLE = 0;
+    const int PARRY = 1;
+    const int BLOCK = 2;
     [SerializeField]
     int swordDamage = 10;
     Animator animator;
     ThirdPersonController controller;
-    bool isBlocking;
     [SerializeField]
     Vector2 parryTimeWindow = new Vector2(0.2f, 1f);
     float timeSinceBlocking;
@@ -21,7 +20,6 @@ public class SwordAttack : MonoBehaviour
     {
         animator = transform.parent.GetComponent<Animator>();
         controller = transform.parent.parent.GetComponent<ThirdPersonController>();
-        isBlocking = false;
         timeSinceBlocking = 0;
     }
 
@@ -32,13 +30,11 @@ public class SwordAttack : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse1) && !controller.IsStunned )
             {
                 animator.SetBool("IsBlocking", true);
-                isBlocking = true;
                 timeSinceBlocking += Time.deltaTime;
             }
             else
             {
                 animator.SetBool("IsBlocking", false);
-                isBlocking = false;
                 timeSinceBlocking = 0;
             }
         }

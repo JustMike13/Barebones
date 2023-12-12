@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6404305875843454459
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    overrideState: 1
+    value: {x: 0.5, y: 0.5}
+  intensity:
+    overrideState: 1
+    value: 0.535
+  smoothness:
+    overrideState: 0
+    value: 0.2
+  roundness:
+    overrideState: 0
+    value: 1
+  rounded:
+    overrideState: 0
+    value: 0
+  mask:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  opacity:
+    overrideState: 0
+    value: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Name: FogProfile
+  m_EditorClassIdentifier: 
+  settings:
+  - {fileID: 6399784998451801798}
+  - {fileID: -6404305875843454459}
+--- !u!114 &6399784998451801798
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ff1461d5870554e85d1d82d00b311c, type: 3}
+  m_Name: BetterFog
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  _UseCustomDepthTexture:
+    overrideState: 0
+    value: 0
+  _UseFogOffsetTexture:
+    overrideState: 0
+    value: 0
+  _FogIntensity:
+    overrideState: 1
+    value: 1
+  _EnergyLoss:
+    overrideState: 0
+    value: 0
+  _UseGradient:
+    overrideState: 0
+    value: 0
+  _FogColor:
+    overrideState: 0
+    value: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  _GradientStart:
+    overrideState: 0
+    value: 0
+  _GradientEnd:
+    overrideState: 0
+    value: 100
+  _GradientTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  _UseSunLight:
+    overrideState: 0
+    value: 0
+  _SunColor:
+    overrideState: 0
+    value: {r: 0.9, g: 0.85, b: 0.8, a: 1}
+  _SunIntensity:
+    overrideState: 0
+    value: 0.5
+  _SunPower:
+    overrideState: 0
+    value: 2
+  _UseDistanceFog:
+    overrideState: 0
+    value: 1
+  _UseRadialDistance:
+    overrideState: 0
+    value: 0
+  _FogType:
+    overrideState: 0
+    value: 3
+  _DistanceFogOffset:
+    overrideState: 0
+    value: -20
+  _SceneStart:
+    overrideState: 0
+    value: 10
+  _SceneEnd:
+    overrideState: 0
+    value: 100
+  _FogDensity:
+    overrideState: 0
+    value: 0.001
+  _UseSkyboxHeightFog:
+    overrideState: 0
+    value: 0
+  _SkyboxFogOffset:
+    overrideState: 1
+    value: -0.021
+  _SkyboxFogHardness:
+    overrideState: 0
+    value: 0
+  _SkyboxFogIntensity:
+    overrideState: 0
+    value: 1
+  _SkyboxFill:
+    overrideState: 0
+    value: 0
+  _UseHeightFog:
+    overrideState: 0
+    value: 0
+  _Height:
+    overrideState: 0
+    value: 4
+  _HeightDensity:
+    overrideState: 0
+    value: 0.368
+  _HeightFogType:
+    overrideState: 0
+    value: 2
+  _UseNoise:
+    overrideState: 0
+    value: 0
+  _NoiseAffect:
+    overrideState: 0
+    value: 2
+  _NoiseIntensity:
+    overrideState: 0
+    value: 1
+  _NoiseDistanceEnd:
+    overrideState: 0
+    value: 80
+  _NoiseEndHardness:
+    overrideState: 0
+    value: 0.35
+  _Scale1:
+    overrideState: 0
+    value: 40
+  _Lerp1:
+    overrideState: 0
+    value: 0.5
+  _NoiseSpeed1:
+    overrideState: 0
+    value: {x: 0, y: 0, z: 0}
+  _NoiseTimeScale1:
+    overrideState: 0
+    value: 0.1
+  _UseSSMS:
+    overrideState: 0
+    value: 0
+  _Threshold:
+    overrideState: 0
+    value: 0
+  _SoftKnee:
+    overrideState: 0
+    value: 0.5
+  _Radius:
+    overrideState: 0
+    value: 7
+  _BlurWeight:
+    overrideState: 0
+    value: 1
+  _Intensity:
+    overrideState: 0
+    value: 1
+  _HighQuality:
+    overrideState: 0
+    value: 0
+  _AntiFlicker:
+    overrideState: 0
+    value: 0
+  _FadeRamp:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
