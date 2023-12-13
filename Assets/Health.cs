@@ -8,14 +8,10 @@ public class Health : MonoBehaviour
     [SerializeField]
     float maxHealth;
     float currentHealth;
-    GameObject healthBar = null;
+    protected GameObject healthBar = null;
 
     void Start()
     {
-        if (transform.tag == "Player")
-        {
-            healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar");
-        }
         RefillHealth();
     }
 
