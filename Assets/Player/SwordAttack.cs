@@ -10,7 +10,7 @@ public class SwordAttack : MonoBehaviour
     [SerializeField]
     int swordDamage = 10;
     Animator animator;
-    ThirdPersonController controller;
+    BaseContoller controller;
     [SerializeField]
     Vector2 parryTimeWindow = new Vector2(0.2f, 1f);
     float timeSinceBlocking;
@@ -19,7 +19,7 @@ public class SwordAttack : MonoBehaviour
     private void Start()
     {
         animator = transform.parent.GetComponent<Animator>();
-        controller = transform.parent.parent.GetComponent<ThirdPersonController>();
+        controller = transform.parent.parent.GetComponent<BaseContoller>();
         timeSinceBlocking = 0;
     }
 
@@ -27,7 +27,7 @@ public class SwordAttack : MonoBehaviour
     {
         if (animator != null)
         {
-            if (Input.GetKey(KeyCode.Mouse1) && !controller.IsStunned )
+            if (controller.IsBlocking())
             {
                 animator.SetBool("IsBlocking", true);
                 timeSinceBlocking += Time.deltaTime;

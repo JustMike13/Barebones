@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirdPersonController : MonoBehaviour
+public class ThirdPersonController : BaseContoller
 {
     private CharacterController controller;
     private GameObject mainCamera;
@@ -21,10 +21,6 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] 
     float minSpeedMultiplier = 0.2f;
     float maxSpeedMultiplier = 1f;
-    [SerializeField]
-    bool isStunned;
-    public bool IsStunned { get { return isStunned; } }
-    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +30,7 @@ public class ThirdPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isStunned = false;
-        animator = transform.GetComponent<Animator>();
+        GetAnimator();
     }
 
     // Update is called once per frame
@@ -42,6 +38,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         ProcessMovement();
         ProcessCameraRotation();
+        ProcessBlocking();
     }
 
     private void ProcessMovement()
@@ -103,12 +100,9 @@ public class ThirdPersonController : MonoBehaviour
         mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
     }
 
-
-    public void GetStunned()
+    private void ProcessBlocking()
     {
-        if (animator != null)
-        {
-            animator.Play("Stunned");
-        }
+        isBlocking = Input.GetKey(KeyCode.Mouse1) ? true : false;
     }
+
 }
