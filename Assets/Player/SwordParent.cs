@@ -17,7 +17,7 @@ public class SwordParent : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        isAttacking = false;
+        
     }
 
     // Update is called once per frame

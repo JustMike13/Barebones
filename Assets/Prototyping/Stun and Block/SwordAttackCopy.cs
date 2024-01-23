@@ -10,7 +10,7 @@ public class SwordAttackCopy : MonoBehaviour
     [SerializeField]
     int swordDamage = 10;
     Animator animator;
-    ThirdPersonControllerCopy controller;
+    BaseContoller controller;
     [SerializeField]
     Vector2 parryTimeWindow = new Vector2(0.2f, 1f);
     float timeSinceBlocking;
@@ -19,9 +19,9 @@ public class SwordAttackCopy : MonoBehaviour
     private void Start()
     {
         animator = transform.parent.GetComponent<Animator>();
-        controller = transform.parent.parent.GetComponent<ThirdPersonControllerCopy>();
+        controller = transform.parent.parent.GetComponent<BaseContoller>();
         timeSinceBlocking = 0;
-        animator.SetBool("IsBlocking", true);
+        //animator.SetBool("IsBlocking", true);
         timeSinceBlocking = 5;
     }
 

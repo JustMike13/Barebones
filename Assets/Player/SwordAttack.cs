@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class SwordAttack : Attack
 {
     const int IDLE = 0;
     const int PARRY = 1;
@@ -18,8 +19,8 @@ public class SwordAttack : MonoBehaviour
 
     private void Start()
     {
-        animator = transform.parent.GetComponent<Animator>();
-        controller = transform.parent.parent.GetComponent<BaseContoller>();
+        animator = GetComponent<Animator>();
+        controller = transform.parent.GetComponent<BaseContoller>();
         timeSinceBlocking = 0;
     }
 
@@ -40,7 +41,7 @@ public class SwordAttack : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ProcessCollider(Collider other)
     {
         Health enemyHealth = other.GetComponent<Health>();
         if (enemyHealth == null) 
@@ -74,5 +75,13 @@ public class SwordAttack : MonoBehaviour
             return BLOCK;
         }
         return IDLE;
+    }
+
+    override public void UseAttack()
+    {
+        if (!controller.IsAttacking)
+        {
+            animator.Play("Attack");
+        }
     }
 }

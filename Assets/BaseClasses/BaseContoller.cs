@@ -8,6 +8,8 @@ public class BaseContoller : MonoBehaviour
     public bool IsStunned { get { return isStunned; } }
     protected bool isBlocking;
     protected Animator animator;
+    bool isAttacking;
+    public bool IsAttacking { get { return isAttacking; } }
 
     protected void GetAnimator()
     {

@@ -175,12 +175,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3298910509831600626}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.716, z: 0.498}
-  m_LocalScale: {x: 0.88591, y: 0.31838563, z: 0.047756027}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.3172566, z: 0.49798584}
+  m_LocalScale: {x: 0.88591, y: 0.20381346, z: 0.047756027}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 172994934491523332}
+  m_Father: {fileID: 7813118033133959366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6134327903038942917
 MeshFilter:
@@ -289,7 +289,6 @@ Transform:
   m_Children:
   - {fileID: 7813118033133959366}
   - {fileID: 1880606947442379548}
-  - {fileID: 2411392271689313539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!143 &5335496514374109860
@@ -365,13 +364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
-  agent: {fileID: 0}
-  wahtIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 256
   meleeRange: 5
   speed: 10
   attackDelay: 4
@@ -537,7 +529,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1f2b2f92498913f4eb844e030fe5bf94, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7075417661666373314, guid: f0e15288f87753a45824bf5c88ccb524, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2411392271689313539}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0e15288f87753a45824bf5c88ccb524, type: 3}
 --- !u!4 &7813118033133959366 stripped

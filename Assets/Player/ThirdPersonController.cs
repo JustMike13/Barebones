@@ -6,6 +6,7 @@ using UnityEngine;
 public class ThirdPersonController : BaseContoller
 {
     private CharacterController controller;
+    [SerializeField]
     private GameObject mainCamera;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -21,12 +22,13 @@ public class ThirdPersonController : BaseContoller
     [SerializeField] 
     float minSpeedMultiplier = 0.2f;
     float maxSpeedMultiplier = 1f;
+    [SerializeField]
+    SwordAttack sword;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        mainCamera = GameObject.FindWithTag("MainCamera");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isStunned = false;
@@ -38,7 +40,16 @@ public class ThirdPersonController : BaseContoller
     {
         ProcessMovement();
         ProcessCameraRotation();
+        ProcessAttacking();
         ProcessBlocking();
+    }
+
+    private void ProcessAttacking()
+    {
+        if (Input.GetButtonDown("Fire1") && !isBlocking)
+        {
+            sword.UseAttack();
+        }
     }
 
     private void ProcessMovement()
@@ -102,7 +113,7 @@ public class ThirdPersonController : BaseContoller
 
     private void ProcessBlocking()
     {
-        isBlocking = Input.GetKey(KeyCode.Mouse1) ? true : false;
+        isBlocking = Input.GetKey(KeyCode.Mouse1) && !IsAttacking ? true : false;
     }
 
 }
