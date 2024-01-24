@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordAttack : Attack
@@ -8,8 +9,6 @@ public class SwordAttack : Attack
     const int IDLE = 0;
     const int PARRY = 1;
     const int BLOCK = 2;
-    [SerializeField]
-    int swordDamage = 10;
     Animator animator;
     BaseContoller controller;
     [SerializeField]
@@ -26,6 +25,7 @@ public class SwordAttack : Attack
 
     private void Update()
     {
+        UpdateCooldown();
         if (animator != null)
         {
             if (controller.IsBlocking())
@@ -41,7 +41,7 @@ public class SwordAttack : Attack
         }
     }
 
-    public void ProcessCollider(Collider other)
+    override public void ProcessCollider(Collider other)
     {
         Health enemyHealth = other.GetComponent<Health>();
         if (enemyHealth == null) 
@@ -61,7 +61,7 @@ public class SwordAttack : Attack
                 return;
             }
         }
-        enemyHealth.TakeDamage(swordDamage);
+        enemyHealth.TakeDamage(damage);
     }
 
     public int Block()
@@ -82,6 +82,7 @@ public class SwordAttack : Attack
         if (!controller.IsAttacking)
         {
             animator.Play("Attack");
+            cooldownLeft = cooldown;
         }
     }
 }

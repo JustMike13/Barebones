@@ -29,10 +29,16 @@ public class OpponentController : BaseContoller
     // Update is called once per frame
     void Update()
     {
+        ///////////   -  REMOVE  -   //////////
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            attacks.ElementAt(1).UseAttack();
+        }
+        ///////////////////////////////////////
         timeSinceAttack += Time.deltaTime;
         if (!isStunned && !IsAttacking)
         {
-            transform.LookAt(player.transform);
+            LookAtPlayer();
             if (timeSinceAttack > attackDelay)
             {
                 UpdateAttackDelay();
@@ -50,6 +56,11 @@ public class OpponentController : BaseContoller
         }
     }
 
+    override public void LookAtPlayer()
+    {
+        transform.LookAt(player.transform);
+    }
+
     private void UpdateAttackDelay()
     {
         attackDelay = UnityEngine.Random.Range(attackDelayRange.x, attackDelayRange.y);
@@ -57,7 +68,7 @@ public class OpponentController : BaseContoller
 
     private Attack ChooseAttack()
     {
-        IEnumerable<Attack> localAttacks = attacks.Where(a => a.InRange(Vector3.Distance(transform.position, player.position)));
+        IEnumerable<Attack> localAttacks = attacks.Where(a => a.InRange(Vector3.Distance(transform.position, player.position)) && a.CanUse());
         if (localAttacks.Count() == 0)
         {
             return null;

@@ -9,7 +9,7 @@ public class BaseContoller : MonoBehaviour
     protected bool isBlocking;
     protected Animator animator;
     bool isAttacking;
-    public bool IsAttacking { get { return isAttacking; } }
+    public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
 
     protected void GetAnimator()
     {
@@ -32,4 +32,6 @@ public class BaseContoller : MonoBehaviour
             animator.Play("Stunned");
         }
     }
+
+    public virtual void LookAtPlayer() { }
 }

@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordHitCollider : MonoBehaviour
+public class AttackCollider : MonoBehaviour
 {
     [SerializeField]
-    SwordAttack sword;
+    public Attack attack;
     private void OnTriggerEnter(Collider other)
     {
-        sword.ProcessCollider(other);
+        attack.ProcessCollider(other);
     }
-
 }
