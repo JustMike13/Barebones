@@ -1079,13 +1079,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2330380727640699789, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: canBeBlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330380727640699789, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: canBeParried
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330380727640699789, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: parryIndicator
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224794217668661102, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: range.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224794217668661102, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: projectileSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3224794217668661102, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 1858573917579720506, guid: 9776df6f5e2b5c244b5b4bd8b9affe00, type: 3}
     - target: {fileID: 3224794217668661102, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
       propertyPath: projectileMaxDistance
-      value: 50
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776452584259449632, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: maxHealth
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5786305511576683176, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
       propertyPath: m_Name
@@ -1183,6 +1207,14 @@ PrefabInstance:
     - target: {fileID: 2791165916775654489, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: range.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791165916775654489, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: canBeBlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791165916775654489, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: canBeParried
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3694690161752361193, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: m_IsTrigger

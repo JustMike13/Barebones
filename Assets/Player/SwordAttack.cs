@@ -6,39 +6,57 @@ using UnityEngine;
 
 public class SwordAttack : Attack
 {
-    const int IDLE = 0;
-    const int PARRY = 1;
-    const int BLOCK = 2;
     Animator animator;
     BaseContoller controller;
     [SerializeField]
-    Vector2 parryTimeWindow = new Vector2(0.2f, 1f);
-    float timeSinceBlocking;
-
+    bool parryIndicator;
+    public bool isAttacking;
+    public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
+    bool oldIsAttacking;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         controller = transform.parent.GetComponent<BaseContoller>();
-        timeSinceBlocking = 0;
+        isAttacking = false;
     }
 
     private void Update()
     {
         UpdateCooldown();
+        ProcessParry();
         if (animator != null)
         {
             if (controller.IsBlocking())
             {
                 animator.SetBool("IsBlocking", true);
-                timeSinceBlocking += Time.deltaTime;
             }
             else
             {
                 animator.SetBool("IsBlocking", false);
-                timeSinceBlocking = 0;
             }
         }
+        if (oldIsAttacking && !isAttacking) 
+        {
+            controller.IsAttacking = false;
+        }
+        oldIsAttacking = isAttacking;
+    }
+
+    private void ProcessParry()
+    {
+        if (parryWindowOn && !oldParryWindowOn)
+        {
+            parryWindow.x = Time.time;
+            parryWindow.y = Mathf.Infinity;
+            parryWindowOn = true;
+        }
+        else if (!parryWindowOn && oldParryWindowOn)
+        {
+            parryWindow.y = Time.time;
+            parryWindowOn = false;
+        }
+        oldParryWindowOn = parryWindowOn;
     }
 
     override public void ProcessCollider(Collider other)
@@ -48,34 +66,22 @@ public class SwordAttack : Attack
         {
             return;
         }
-        SwordAttack enemyAttack = other.GetComponentInChildren<SwordAttack>();
-        if (enemyAttack != null)
+        BaseContoller enemyController = other.GetComponentInChildren<BaseContoller>();
+        if (enemyController != null)
         {
-            int blocked = enemyAttack.Block();
-            if (blocked == PARRY)
+            bool blocked = enemyController.IsBlocking();
+            if (blocked && canBeBlocked)
             {
-                controller.GetStunned();
-            }
-            if (blocked != IDLE)
-            {
+                if (CorrectParry(enemyController.StartBlockingTime))
+                {
+                    controller.GetStunned();
+                }
                 return;
             }
         }
         enemyHealth.TakeDamage(damage);
     }
 
-    public int Block()
-    {
-        if (timeSinceBlocking > parryTimeWindow[0] && timeSinceBlocking < parryTimeWindow[1])
-        {
-            return PARRY;
-        }
-        if (timeSinceBlocking > 0)
-        {
-            return BLOCK;
-        }
-        return IDLE;
-    }
 
     override public void UseAttack()
     {
@@ -83,6 +89,8 @@ public class SwordAttack : Attack
         {
             animator.Play("Attack");
             cooldownLeft = cooldown;
+            isAttacking = true;
+            controller.IsAttacking = true;
         }
     }
 }

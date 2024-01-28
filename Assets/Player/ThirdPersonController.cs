@@ -113,7 +113,16 @@ public class ThirdPersonController : BaseContoller
 
     private void ProcessBlocking()
     {
+        bool oldIsBlocking = isBlocking;
         isBlocking = Input.GetKey(KeyCode.Mouse1) && !IsAttacking ? true : false;
+        if (isBlocking && !oldIsBlocking) 
+        { 
+            StartBlockingTime = Time.time;
+        }
+        else if (!isBlocking && oldIsBlocking)
+        {
+            StartBlockingTime = Mathf.Infinity;
+        }
     }
 
 }

@@ -133,7 +133,7 @@ AnimationClip:
     attribute: isStunned
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 48fd5cc24a779a64aa6633a3582d086f, type: 3}
+    script: {fileID: 11500000, guid: 767fe537fad592448bc1f8d0cc8916e5, type: 3}
     flags: 0
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -155,7 +155,7 @@ AnimationClip:
     - serializedVersion: 2
       path: 0
       attribute: 1280260825
-      script: {fileID: 11500000, guid: 48fd5cc24a779a64aa6633a3582d086f, type: 3}
+      script: {fileID: 11500000, guid: 767fe537fad592448bc1f8d0cc8916e5, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
@@ -427,7 +427,7 @@ AnimationClip:
     attribute: isStunned
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 48fd5cc24a779a64aa6633a3582d086f, type: 3}
+    script: {fileID: 11500000, guid: 767fe537fad592448bc1f8d0cc8916e5, type: 3}
     flags: 0
   m_EulerEditorCurves:
   - serializedVersion: 2

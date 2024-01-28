@@ -10,6 +10,8 @@ public class BaseContoller : MonoBehaviour
     protected Animator animator;
     bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
+    float startBlockingTime;
+    public float StartBlockingTime { get { return startBlockingTime; } set { startBlockingTime = value; } }
 
     protected void GetAnimator()
     {

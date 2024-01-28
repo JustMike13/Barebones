@@ -53,18 +53,18 @@ public class SwordAttackCopy : MonoBehaviour
             return;
         }
         SwordAttack enemyAttack = other.GetComponentInChildren<SwordAttack>();
-        if (enemyAttack != null)
-        {
-            int blocked = enemyAttack.Block();
-            if (blocked == PARRY)
-            {
-                controller.GetStunned();
-            }
-            if (blocked != IDLE)
-            {
-                return;
-            }
-        }
+        //if (enemyAttack != null)
+        //{
+        //    int blocked = enemyAttack.Block();
+        //    if (blocked == PARRY)
+        //    {
+        //        controller.GetStunned();
+        //    }
+        //    if (blocked != IDLE)
+        //    {
+        //        return;
+        //    }
+        //}
         enemyHealth.TakeDamage(swordDamage);
     }
 

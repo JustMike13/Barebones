@@ -18,6 +18,8 @@ public class OpponentController : BaseContoller
     float timeSinceAttack;
     [SerializeField]
     List<Attack> attacks;
+    [SerializeField]
+    GameObject parryIndicator;
 
     void Awake()
     {
@@ -54,6 +56,12 @@ public class OpponentController : BaseContoller
                 FollowPlayer();
             }
         }
+        ProcessParryIndicator();
+    }
+
+    private void ProcessParryIndicator()
+    {
+        parryIndicator.SetActive(attacks.Any(a => a.parryWindowOn));
     }
 
     override public void LookAtPlayer()
