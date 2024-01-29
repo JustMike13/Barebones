@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class OpponentController : BaseContoller
 {
@@ -20,6 +18,11 @@ public class OpponentController : BaseContoller
     List<Attack> attacks;
     [SerializeField]
     GameObject parryIndicator;
+    [SerializeField]
+    float rotationSpeed = 1f;
+    bool isFacingPlayer = false;
+    [SerializeField]
+    float facingAngle = 10f;
 
     void Awake()
     {
@@ -66,7 +69,20 @@ public class OpponentController : BaseContoller
 
     override public void LookAtPlayer()
     {
-        transform.LookAt(player.transform);
+        Vector3 relativePos = player.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        Quaternion rotationDifference = Quaternion.Inverse(targetRotation) * transform.rotation;
+        float angle = rotationDifference.eulerAngles.y;
+        while (angle < 0 )
+        {
+            angle += 360;
+        }
+        while (angle > 360)
+        {
+            angle -= 360;
+        }
+        isFacingPlayer = angle < facingAngle || angle > 360 - facingAngle;
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
     private void UpdateAttackDelay()
@@ -87,7 +103,7 @@ public class OpponentController : BaseContoller
 
     void FollowPlayer()
     {
-        if (Vector3.Distance(transform.position, player.position) > meleeRange)
+        if (Vector3.Distance(transform.position, player.position) > meleeRange && isFacingPlayer)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
