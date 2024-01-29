@@ -8,6 +8,8 @@ public class Attack : MonoBehaviour
     [SerializeField]
     protected int damage;
     [SerializeField]
+    protected int manaCost;
+    [SerializeField]
     Vector2 range;
     [SerializeField]
     protected bool canBeBlocked;

@@ -7,7 +7,7 @@ public class OpponentHealth : Health
     // Start is called before the first frame update
     void Start()
     {
-        healthBar = GameObject.FindGameObjectWithTag("OpponentHealthBar");
-        RefillHealth();
+        UIBar = GameObject.FindGameObjectWithTag("OpponentHealthBar");
+        Refill();
     }
 }

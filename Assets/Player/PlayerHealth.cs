@@ -7,7 +7,7 @@ public class PlayerHealth : Health
     // Start is called before the first frame update
     void Start()
     {
-        healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar");
-        RefillHealth();
+        UIBar = GameObject.FindGameObjectWithTag("PlayerHealthBar");
+        Refill();
     }
 }

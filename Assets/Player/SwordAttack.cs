@@ -13,12 +13,14 @@ public class SwordAttack : Attack
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     bool oldIsAttacking;
+    PlayerMana playerMana;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         controller = transform.parent.GetComponent<BaseContoller>();
         isAttacking = false;
+        playerMana = transform.parent.GetComponent<PlayerMana>();
     }
 
     private void Update()
@@ -80,6 +82,10 @@ public class SwordAttack : Attack
             }
         }
         enemyHealth.TakeDamage(damage);
+        if (playerMana != null)
+        {
+            playerMana.AddHitBonus();
+        }
     }
 
 

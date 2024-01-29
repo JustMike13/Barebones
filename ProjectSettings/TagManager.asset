@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - PlayerHealthBar
   - OpponentHealthBar
+  - PlayerMana
   layers:
   - Default
   - TransparentFX
