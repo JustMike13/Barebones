@@ -24,11 +24,13 @@ public class ThirdPersonController : BaseContoller
     float maxSpeedMultiplier = 1f;
     [SerializeField]
     SwordAttack sword;
+    HealingAbility healingAbility;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        healingAbility = GetComponent<HealingAbility>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isStunned = false;
@@ -42,6 +44,12 @@ public class ThirdPersonController : BaseContoller
         ProcessCameraRotation();
         ProcessAttacking();
         ProcessBlocking();
+        ProcessHealing();
+    }
+
+    private void ProcessHealing()
+    {
+        healingAbility.IsHealing = Input.GetKey(KeyCode.E) && !isBlocking ;
     }
 
     private void ProcessAttacking()

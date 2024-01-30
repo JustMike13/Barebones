@@ -15,10 +15,21 @@ public class UIStatusBar : MonoBehaviour
         Refill();
     }
 
-    public void Refill()
+    public void Refill(float value = Mathf.Infinity)
     {
-        currentValue = maxValue;
-        SetBarFill(1f);
+        if (value == Mathf.Infinity)
+        {
+            currentValue = maxValue;
+        }
+        else
+        {
+            currentValue += value;
+            if (currentValue > maxValue)
+            {
+                currentValue = maxValue;
+            }
+        }
+        SetBarFill(currentValue / maxValue);
     }
 
     public void SetBarFill(float percentage)
@@ -27,5 +38,10 @@ public class UIStatusBar : MonoBehaviour
         {
             UIBar.GetComponent<Image>().fillAmount = percentage;
         }
+    }
+
+    public bool IsFull()
+    {
+        return currentValue == maxValue;
     }
 }

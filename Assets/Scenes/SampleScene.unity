@@ -554,6 +554,29 @@ MonoBehaviour:
   maxValue: 100
   startingValue: 30
   hitBonus: 10
+--- !u!114 &558122337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558122325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e756199548c96047baf0a46dfac49af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  manaCost: 20
+  range: {x: 0, y: 0}
+  canBeBlocked: 0
+  canBeParried: 0
+  cooldown: 0
+  parryWindowOn: 0
+  healingAura: {fileID: 1685992739}
+  duration: 1.5
+  healDelay: 0.7
+  steps: 20
 --- !u!1 &614565677
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +988,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625168276}
   m_CullTransparentMesh: 1
+--- !u!1 &1685992739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3562393451123874381, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+  m_PrefabInstance: {fileID: 2698356573166735048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812903647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1311,10 @@ PrefabInstance:
       propertyPath: canBeParried
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3562393451123874381, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3694690161752361193, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1319,6 +1351,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2371745166387726416, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558122331}
+    - targetCorrespondingSourceObject: {fileID: 2371745166387726416, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 558122337}
   m_SourcePrefab: {fileID: 100100000, guid: af90082dcf3f8914993aacb68193c863, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

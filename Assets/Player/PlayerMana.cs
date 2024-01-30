@@ -20,11 +20,11 @@ public class PlayerMana : UIStatusBar
     public void ConsumeMana(float ConsumedValue = 5)
     {
         currentValue -= ConsumedValue;
-        SetBarFill(currentValue / maxValue);
         if (currentValue <= 0)
         {
-            Destroy(gameObject);
+            currentValue = 0;
         }
+        SetBarFill(currentValue / maxValue);
     }
 
     public void AddMana(float AddedValue)
@@ -40,5 +40,10 @@ public class PlayerMana : UIStatusBar
     internal void AddHitBonus()
     {
         AddMana(hitBonus);
+    }
+
+    public bool IsAvailable(float value)
+    {
+        return value <= currentValue;
     }
 }

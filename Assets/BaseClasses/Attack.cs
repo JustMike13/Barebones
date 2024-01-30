@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    protected Animator animator;
+    protected BaseContoller controller;
     [SerializeField]
     protected int damage;
     [SerializeField]
@@ -22,6 +24,7 @@ public class Attack : MonoBehaviour
     [DoNotSerialize]
     public bool parryWindowOn;
     protected bool oldParryWindowOn;
+    protected PlayerMana playerMana;
 
     private void Update()
     {

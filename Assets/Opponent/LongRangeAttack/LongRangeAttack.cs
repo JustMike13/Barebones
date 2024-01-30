@@ -12,7 +12,6 @@ public class LongRangeAttack : Attack
     [SerializeField]
     float projectileMaxDistance;
     GameObject projectileInstance;
-    BaseContoller controller;
     Vector3 startingPosition;
     float timePassed;
     [SerializeField]

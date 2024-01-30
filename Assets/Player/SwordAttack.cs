@@ -6,14 +6,11 @@ using UnityEngine;
 
 public class SwordAttack : Attack
 {
-    Animator animator;
-    BaseContoller controller;
     [SerializeField]
     bool parryIndicator;
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     bool oldIsAttacking;
-    PlayerMana playerMana;
 
     private void Start()
     {
