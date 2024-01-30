@@ -12,7 +12,7 @@ public class OpponentController : BaseContoller
     public float speed = 10f;
     [SerializeField]
     Vector2 attackDelayRange;
-    float attackDelay = 4f;
+    float attackDelay = 1f;
     float timeSinceAttack;
     [SerializeField]
     List<Attack> attacks;

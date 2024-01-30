@@ -35,24 +35,28 @@ public class HealingAbility : Attack
         if (isHealing && Time.time - lastHeal >= healDelay 
             && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull())
         {
-            animator.SetBool("IsHealing", true);
-            if (stepsCompleted < steps) 
+            if (SetBusy())
             {
-                if (Time.time - lastUpdateTime >= step)
+                animator.SetBool("IsHealing", true);
+                if (stepsCompleted < steps) 
                 {
-                    playerMana.ConsumeMana(manaCost / steps);
-                    lastUpdateTime = Time.time;
-                    stepsCompleted += 1;
+                    if (Time.time - lastUpdateTime >= step)
+                    {
+                        playerMana.ConsumeMana(manaCost / steps);
+                        lastUpdateTime = Time.time;
+                        stepsCompleted += 1;
+                    }
                 }
-            }
-            if (stepsCompleted == steps) 
-            {
-                lastHeal = Time.time;
-                playerHealth.Refill(damage);
+                if (stepsCompleted == steps) 
+                {
+                    lastHeal = Time.time;
+                    playerHealth.Refill(damage);
+                }
             }
         }
         else
         {
+            NotBusy();
             animator.SetBool("IsHealing", false);
             lastUpdateTime = Time.time;
             stepsCompleted = 0;

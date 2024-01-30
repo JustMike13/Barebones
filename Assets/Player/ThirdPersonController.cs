@@ -16,10 +16,10 @@ public class ThirdPersonController : BaseContoller
     private float gravityValue = -18.0f;
     private float sensitivity = 2.0f;
     private float sprintMultiplier = 1.7f;
-    [SerializeField] 
+    [SerializeField]
     float speedUpTime = 0.3f;
     float speedUpTimeElapsed = 0;
-    [SerializeField] 
+    [SerializeField]
     float minSpeedMultiplier = 0.2f;
     float maxSpeedMultiplier = 1f;
     [SerializeField]
@@ -47,19 +47,6 @@ public class ThirdPersonController : BaseContoller
         ProcessHealing();
     }
 
-    private void ProcessHealing()
-    {
-        healingAbility.IsHealing = Input.GetKey(KeyCode.E) && !isBlocking ;
-    }
-
-    private void ProcessAttacking()
-    {
-        if (Input.GetButtonDown("Fire1") && !isBlocking)
-        {
-            sword.UseAttack();
-        }
-    }
-
     private void ProcessMovement()
     {
         groundedPlayer = controller.isGrounded;
@@ -68,7 +55,7 @@ public class ThirdPersonController : BaseContoller
             playerVelocity.y = -1.0f;
         }
 
-        if(isStunned)
+        if (isStunned || IsBusy)
         {
             return;
         }
@@ -118,6 +105,14 @@ public class ThirdPersonController : BaseContoller
         mouse = Input.GetAxis("Mouse Y");
         mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
     }
+    
+    private void ProcessAttacking()
+    {
+        if (Input.GetButtonDown("Fire1") && !isBlocking)
+        {
+            sword.UseAttack();
+        }
+    }
 
     private void ProcessBlocking()
     {
@@ -133,4 +128,8 @@ public class ThirdPersonController : BaseContoller
         }
     }
 
+    private void ProcessHealing()
+    {
+        healingAbility.IsHealing = Input.GetKey(KeyCode.E) && !isBlocking;
+    }
 }

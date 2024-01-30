@@ -8,6 +8,7 @@ public class SwordAttack : Attack
 {
     [SerializeField]
     bool parryIndicator;
+    [HideInInspector]
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     bool oldIsAttacking;

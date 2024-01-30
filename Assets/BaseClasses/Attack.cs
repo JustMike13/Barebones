@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,10 +22,11 @@ public class Attack : MonoBehaviour
     protected float cooldown = 1f;
     protected float cooldownLeft;
     protected Vector2 parryWindow;
-    [DoNotSerialize]
+    [HideInInspector]
     public bool parryWindowOn;
     protected bool oldParryWindowOn;
     protected PlayerMana playerMana;
+    bool setBusyByMe = false;
 
     private void Update()
     {
@@ -48,5 +50,30 @@ public class Attack : MonoBehaviour
     public bool CorrectParry(float blockingTime)
     {
         return canBeParried && blockingTime >= parryWindow.x && blockingTime <= parryWindow.y;
+    }
+
+    public bool SetBusy()
+    {
+        if (!controller.IsBusy)
+        {
+            controller.IsBusy = true;
+            setBusyByMe = true;
+            return true;
+        }
+        else if (setBusyByMe)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public void NotBusy()
+    {
+        if (setBusyByMe) 
+        { 
+            controller.IsBusy = false;
+            setBusyByMe = false;
+        }
     }
 }
