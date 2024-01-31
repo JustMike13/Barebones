@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class OpponentController : BaseContoller
@@ -23,6 +24,8 @@ public class OpponentController : BaseContoller
     bool isFacingPlayer = false;
     [SerializeField]
     float facingAngle = 10f;
+    [SerializeField]
+    OverlayMenu menu;
 
     void Awake()
     {
@@ -34,8 +37,13 @@ public class OpponentController : BaseContoller
     // Update is called once per frame
     void Update()
     {
-        ///////////   -  REMOVE  -   //////////
-        if (Input.GetKeyDown(KeyCode.H))
+
+        if (!menu.IsGameON())
+        {
+            return;
+        }
+            ///////////   -  REMOVE  -   //////////
+            if (Input.GetKeyDown(KeyCode.H))
         {
             attacks.ElementAt(1).UseAttack();
         }
@@ -69,6 +77,10 @@ public class OpponentController : BaseContoller
 
     override public void LookAtPlayer()
     {
+        if (player == null)
+        {
+            return;
+        }
         Vector3 relativePos = player.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         Quaternion rotationDifference = Quaternion.Inverse(targetRotation) * transform.rotation;

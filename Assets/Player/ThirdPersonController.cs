@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ThirdPersonController : BaseContoller
 {
@@ -25,14 +27,18 @@ public class ThirdPersonController : BaseContoller
     [SerializeField]
     SwordAttack sword;
     HealingAbility healingAbility;
+    bool lockRotation = false;
+    public bool LockRotation {  get { return lockRotation; } set {  lockRotation = value; } }
+    [SerializeField]
+    GameObject deathCameraPrefab;
+    [SerializeField]
+    OverlayMenu menu;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         healingAbility = GetComponent<HealingAbility>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         isStunned = false;
         GetAnimator();
     }
@@ -40,11 +46,14 @@ public class ThirdPersonController : BaseContoller
     // Update is called once per frame
     void Update()
     {
-        ProcessMovement();
-        ProcessCameraRotation();
-        ProcessAttacking();
-        ProcessBlocking();
-        ProcessHealing();
+        if (menu.IsGameON())
+        {
+            ProcessMovement();
+            ProcessCameraRotation();
+            ProcessAttacking();
+            ProcessBlocking();
+            ProcessHealing();
+        }
     }
 
     private void ProcessMovement()
@@ -99,6 +108,10 @@ public class ThirdPersonController : BaseContoller
 
     private void ProcessCameraRotation()
     {
+        if (lockRotation)
+        {
+            return;
+        }
         //camera rotation by mouse
         float mouse = Input.GetAxis("Mouse X");
         transform.Rotate(new Vector3(0, mouse * sensitivity, 0));
@@ -131,5 +144,14 @@ public class ThirdPersonController : BaseContoller
     private void ProcessHealing()
     {
         healingAbility.IsHealing = Input.GetKey(KeyCode.E) && !isBlocking;
+    }
+
+    public override void Death()
+    {
+        mainCamera.gameObject.SetActive(false);
+        GameObject deathCamera = Instantiate(deathCameraPrefab);
+        deathCamera.transform.position = mainCamera.transform.position;
+        deathCamera.transform.rotation = mainCamera.transform.rotation;
+        base.Death();
     }
 }

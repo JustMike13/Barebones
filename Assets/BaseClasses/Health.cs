@@ -10,7 +10,7 @@ public class Health : UIStatusBar
         SetBarFill(currentValue / maxValue);
         if (currentValue <= 0)
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<BaseContoller>().Death();
         }
     }
 }

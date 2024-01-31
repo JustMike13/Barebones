@@ -40,4 +40,9 @@ public class BaseContoller : MonoBehaviour
     }
 
     public virtual void LookAtPlayer() { }
+
+    public virtual void Death()
+    {
+        Destroy(this);
+    }
 }
