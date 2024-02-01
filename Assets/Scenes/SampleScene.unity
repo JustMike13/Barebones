@@ -963,6 +963,26 @@ PrefabInstance:
       propertyPath: opponent
       value: 
       objectReference: {fileID: 232670446}
+    - target: {fileID: 875961010794782222, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296233402108272451, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362418039276621860, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480618616789725144, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315457347290634826, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2320539399931460367, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
       propertyPath: m_Name
       value: OverlayMenu
@@ -1010,6 +1030,18 @@ PrefabInstance:
     - target: {fileID: 2898898286503782830, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913537128763508427, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978778174745597162, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280693027543302274, guid: dda943cdfdb850a40bd36018903f324a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
