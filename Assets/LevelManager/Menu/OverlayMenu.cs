@@ -29,12 +29,6 @@ public class OverlayMenu : MonoBehaviour
     OpponentController opponent;
     int state = -1;
 
-    private void Start()
-    {
-        ChangeState(START);
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -47,15 +41,6 @@ public class OverlayMenu : MonoBehaviour
             {
                 ChangeState(INGAME);
             }
-        }
-
-        if (player == null)
-        {
-            ChangeState(GAMEOVER);
-        }
-        if (opponent == null)
-        {
-            ChangeState(VICTORY);
         }
     }
 

@@ -62,4 +62,18 @@ public class HealingAbility : Attack
             stepsCompleted = 0;
         }
     }
+
+    override public void Interrupt()
+    {
+        if (isHealing)
+        {
+            // TODO: Replace with getting hit animation
+            // animator.Play("Idle");
+            lastHeal = Time.time;
+            NotBusy();
+            animator.SetBool("IsHealing", false);
+            lastUpdateTime = Time.time;
+            stepsCompleted = 0;
+        }
+    }
 }

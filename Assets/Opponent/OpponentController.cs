@@ -42,12 +42,7 @@ public class OpponentController : BaseContoller
         {
             return;
         }
-            ///////////   -  REMOVE  -   //////////
-            if (Input.GetKeyDown(KeyCode.H))
-        {
-            attacks.ElementAt(1).UseAttack();
-        }
-        ///////////////////////////////////////
+
         timeSinceAttack += Time.deltaTime;
         if (!isStunned && !IsAttacking)
         {
@@ -68,6 +63,7 @@ public class OpponentController : BaseContoller
             }
         }
         ProcessParryIndicator();
+        GetComponent<CharacterController>().enabled = !IsAttacking;
     }
 
     private void ProcessParryIndicator()

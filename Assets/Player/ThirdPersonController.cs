@@ -146,12 +146,15 @@ public class ThirdPersonController : BaseContoller
         healingAbility.IsHealing = Input.GetKey(KeyCode.E) && !isBlocking;
     }
 
-    public override void Death()
+    public override void Interrupt()
     {
-        mainCamera.gameObject.SetActive(false);
-        GameObject deathCamera = Instantiate(deathCameraPrefab);
-        deathCamera.transform.position = mainCamera.transform.position;
-        deathCamera.transform.rotation = mainCamera.transform.rotation;
-        base.Death();
+        if (sword.IsAttacking)
+        {
+            sword.Interrupt();
+        }
+        if (healingAbility.IsHealing)
+        {
+            healingAbility.Interrupt();
+        }
     }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Health : UIStatusBar
 {
-    public void TakeDamage(int damageTaken = 5)
+    public void TakeDamage(float damageTaken = 5)
     {
         currentValue -= damageTaken;
         SetBarFill(currentValue / maxValue);
         if (currentValue <= 0)
         {
-            gameObject.GetComponent<BaseContoller>().Death();
+            gameObject.GetComponent<CharacterManager>().Death();
         }
     }
 }

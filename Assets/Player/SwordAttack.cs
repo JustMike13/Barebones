@@ -15,6 +15,7 @@ public class SwordAttack : Attack
 
     private void Start()
     {
+        // TODO: Use the same animator as character
         animator = GetComponent<Animator>();
         controller = transform.parent.GetComponent<BaseContoller>();
         isAttacking = false;
@@ -61,26 +62,19 @@ public class SwordAttack : Attack
 
     override public void ProcessCollider(Collider other)
     {
-        Health enemyHealth = other.GetComponent<Health>();
-        if (enemyHealth == null) 
+        CharacterManager enemy = other.GetComponent<CharacterManager>();
+        if (enemy == null) 
         {
             return;
         }
-        BaseContoller enemyController = other.GetComponentInChildren<BaseContoller>();
-        if (enemyController != null)
+        float hit = enemy.Hit(damage, canBeBlocked);
+        
+        if (hit != SUCCESS && CorrectParry(hit))
         {
-            bool blocked = enemyController.IsBlocking();
-            if (blocked && canBeBlocked)
-            {
-                if (CorrectParry(enemyController.StartBlockingTime))
-                {
-                    controller.GetStunned();
-                }
-                return;
-            }
+            controller.GetStunned();
         }
-        enemyHealth.TakeDamage(damage);
-        if (playerMana != null)
+
+        if (hit == SUCCESS && playerMana != null)
         {
             playerMana.AddHitBonus();
         }
@@ -95,6 +89,15 @@ public class SwordAttack : Attack
             cooldownLeft = cooldown;
             isAttacking = true;
             controller.IsAttacking = true;
+        }
+    }
+
+    override public void Interrupt() 
+    { 
+        if (isAttacking)
+        {
+            // TODO: Replace with getting hit animation
+            animator.Play("Idle");
         }
     }
 }

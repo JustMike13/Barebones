@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    public const float SUCCESS = 0;
+    public const float FAIL = -1;
     protected Animator animator;
     protected BaseContoller controller;
     [SerializeField]
@@ -41,6 +43,7 @@ public class Attack : MonoBehaviour
         }
     }
     public virtual void UseAttack() { }
+    public virtual void Interrupt() { }
     public virtual bool CanUse() { return cooldownLeft <= 0; }
     public bool InRange(float distance)
     {

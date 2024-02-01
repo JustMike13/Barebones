@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseContoller : MonoBehaviour
 {
-    [NonSerialized]
+    [HideInInspector]
     public bool isStunned;
     public bool IsStunned { get { return isStunned; } }
     protected bool isBlocking;
@@ -45,4 +45,6 @@ public class BaseContoller : MonoBehaviour
     {
         Destroy(this);
     }
+
+    public virtual void Interrupt() { }
 }
