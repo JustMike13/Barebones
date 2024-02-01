@@ -15,11 +15,16 @@ public class SwordAttack : Attack
 
     private void Start()
     {
-        // TODO: Use the same animator as character
-        animator = GetComponent<Animator>();
-        controller = transform.parent.GetComponent<BaseContoller>();
+        if (parryIndicator)
+        {
+            animator = GetComponent<Animator>();
+        }
+        else
+        { 
+            animator = controller.Animator;
+            playerMana = transform.parent.parent.GetComponent<PlayerMana>();
+        }
         isAttacking = false;
-        playerMana = transform.parent.GetComponent<PlayerMana>();
     }
 
     private void Update()
@@ -39,7 +44,7 @@ public class SwordAttack : Attack
         }
         if (oldIsAttacking && !isAttacking) 
         {
-            controller.IsAttacking = false;
+            NotBusy();
         }
         oldIsAttacking = isAttacking;
     }
@@ -63,10 +68,11 @@ public class SwordAttack : Attack
     override public void ProcessCollider(Collider other)
     {
         CharacterManager enemy = other.GetComponent<CharacterManager>();
-        if (enemy == null) 
-        {
-            return;
+        if (enemy == null)
+        { 
+            return; 
         }
+
         float hit = enemy.Hit(damage, canBeBlocked);
         
         if (hit != SUCCESS && CorrectParry(hit))
@@ -83,12 +89,11 @@ public class SwordAttack : Attack
 
     override public void UseAttack()
     {
-        if (!controller.IsAttacking)
+        if (SetBusy())
         {
             animator.Play("Attack");
             cooldownLeft = cooldown;
             isAttacking = true;
-            controller.IsAttacking = true;
         }
     }
 

@@ -14,15 +14,17 @@ public class ThirdPersonController : BaseContoller
     private bool groundedPlayer;
     [SerializeField]
     private float playerSpeed = 10.0f;
+    [SerializeField]
+    private float strafeSpeed = 5.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -18.0f;
     private float sensitivity = 2.0f;
     private float sprintMultiplier = 1.7f;
     [SerializeField]
-    float speedUpTime = 0.3f;
+    float speedUpTime = 1f;
     float speedUpTimeElapsed = 0;
     [SerializeField]
-    float minSpeedMultiplier = 0.2f;
+    float minSpeedMultiplier = 0f;
     float maxSpeedMultiplier = 1f;
     [SerializeField]
     SwordAttack sword;
@@ -40,7 +42,7 @@ public class ThirdPersonController : BaseContoller
         controller = GetComponent<CharacterController>();
         healingAbility = GetComponent<HealingAbility>();
         isStunned = false;
-        GetAnimator();
+        sword.Controller = this;
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class ThirdPersonController : BaseContoller
 
         if (isStunned || IsBusy)
         {
+            speedUpTimeElapsed = 0;
             return;
         }
 
@@ -87,14 +90,24 @@ public class ThirdPersonController : BaseContoller
         }
 
         float speedMultiplier = Mathf.InverseLerp(0f, speedUpTime, speedUpTimeElapsed);
-        speedMultiplier = Mathf.Clamp(speedMultiplier, minSpeedMultiplier, maxSpeedMultiplier);
+        speedMultiplier = speedMultiplier * (maxSpeedMultiplier - minSpeedMultiplier) + minSpeedMultiplier;
 
         //Vector3 move = new Vector3(moveHorizontal, 0, moveVertical);
         if (moveHorizontal != 0 || moveVertical != 0)
         {
+            animator.SetBool("IsWalking", true);
+            animator.SetBool("WalkingStraight", moveVertical != 0);
+            animator.SetFloat("WalkSpeed", moveVertical < 0 ? speedMultiplier * -1 : speedMultiplier);
+            animator.SetFloat("StrafeSpeed", moveHorizontal < 0 ? speedMultiplier * -2 : speedMultiplier * 2);
             controller.Move(transform.forward * moveVertical * Time.deltaTime * playerSpeed * speedMultiplier * sprint);
-            controller.Move(transform.right * moveHorizontal * Time.deltaTime * playerSpeed * speedMultiplier);
+            controller.Move(transform.right * moveHorizontal * Time.deltaTime * strafeSpeed * speedMultiplier);
         }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
+
 
         // Changes the height position of the player..
         if (Input.GetButtonDown("Jump") && groundedPlayer)

@@ -32,6 +32,10 @@ public class OpponentController : BaseContoller
         GetAnimator();
         player = GameObject.Find("Player").transform;
         timeSinceAttack = 0;
+        foreach (var attack in attacks)
+        {
+            attack.Controller = this;
+        }
     }
 
     // Update is called once per frame

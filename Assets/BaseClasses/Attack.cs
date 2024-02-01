@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
     public const float FAIL = -1;
     protected Animator animator;
     protected BaseContoller controller;
+    public BaseContoller Controller { get { return controller; } set { controller = value; } } 
     [SerializeField]
     protected int damage;
     [SerializeField]
