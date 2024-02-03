@@ -23,21 +23,20 @@ public class HealingAbility : Attack
 
     void Start()
     {
-        animator = GetComponent<Animator>();
-        controller = GetComponent<BaseContoller>();
         playerMana = GetComponent<PlayerMana>();
         playerHealth = GetComponent<Health>();
+        healingAura.SetActive(false);
     }
 
     private void Update()
     {
         float step = duration / steps;
         if (isHealing && Time.time - lastHeal >= healDelay 
-            && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull())
+            && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull()) 
         {
             if (SetBusy())
             {
-                animator.SetBool("IsHealing", true);
+                healingAura.SetActive(true);
                 if (stepsCompleted < steps) 
                 {
                     if (Time.time - lastUpdateTime >= step)
@@ -57,7 +56,7 @@ public class HealingAbility : Attack
         else
         {
             NotBusy();
-            animator.SetBool("IsHealing", false);
+            healingAura.SetActive(false);
             lastUpdateTime = Time.time;
             stepsCompleted = 0;
         }
@@ -67,11 +66,9 @@ public class HealingAbility : Attack
     {
         if (isHealing)
         {
-            // TODO: Replace with getting hit animation
-            // animator.Play("Idle");
             lastHeal = Time.time;
             NotBusy();
-            animator.SetBool("IsHealing", false);
+            healingAura.SetActive(false);
             lastUpdateTime = Time.time;
             stepsCompleted = 0;
         }

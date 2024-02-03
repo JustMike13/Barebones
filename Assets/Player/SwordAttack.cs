@@ -98,11 +98,7 @@ public class SwordAttack : Attack
     }
 
     override public void Interrupt() 
-    { 
-        if (isAttacking)
-        {
-            // TODO: Replace with getting hit animation
-            animator.Play("Idle");
-        }
+    {
+        NotBusy();
     }
 }

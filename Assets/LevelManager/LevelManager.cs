@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void Defeat()
-    {
+    { 
         DisableControllers();
         overlay.ChangeState(OverlayMenu.GAMEOVER);
     }

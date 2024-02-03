@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class RestartLevelButton : MonoBehaviour
 {
+    [SerializeField]
+    string Name;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(RestartLevel);
     }
-    static public void RestartLevel()
+    public void RestartLevel() 
     {
+        Debug.Log(Name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

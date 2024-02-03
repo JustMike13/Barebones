@@ -12,13 +12,19 @@ public class CharacterManager : MonoBehaviour
     BaseContoller controller;
     Health health;
     Animator animator;
-    // Start is called before the first frame update
+    [SerializeField]
+    List<Attack> attacks;
 
     void Start()
     {
         controller = GetComponent<BaseContoller>();
         health = GetComponent<Health>();
         animator = GetComponent<Animator>();
+        foreach (Attack attack in attacks)
+        {
+            attack.Controller = controller;
+            attack.Animator = animator;
+        }
     }
 
     public float Hit(float damage, bool canBeBlocked = false)

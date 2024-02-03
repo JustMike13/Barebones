@@ -35,6 +35,18 @@ public class ThirdPersonController : BaseContoller
     GameObject deathCameraPrefab;
     [SerializeField]
     OverlayMenu menu;
+    //Roll
+    [SerializeField]
+    float rollSpeed;
+    [SerializeField]
+    float rollDistance;
+    [SerializeField]
+    float rollDelay;
+    float rollDistanceLeft;
+    float lastRollEnd = 0;
+    Vector3 rollStartingPoint;
+    Vector3 rolldirection;
+    bool isRolling;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +67,7 @@ public class ThirdPersonController : BaseContoller
             ProcessAttacking();
             ProcessBlocking();
             ProcessHealing();
+            ProcessRolling();
         }
     }
 
@@ -74,7 +87,7 @@ public class ThirdPersonController : BaseContoller
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        float sprint = Input.GetAxis("Shift") > 0 && groundedPlayer ? sprintMultiplier : 1.0f;
+        float sprint = 1f;//Input.GetAxis("Shift") > 0 && groundedPlayer ? sprintMultiplier : 1.0f;
 
         if (moveHorizontal != 0 || moveVertical  != 0)
         {
@@ -156,15 +169,50 @@ public class ThirdPersonController : BaseContoller
 
     private void ProcessHealing()
     {
-        healingAbility.IsHealing = Input.GetKey(KeyCode.E) && !isBlocking;
+        healingAbility.IsHealing = Input.GetKey(KeyCode.F) && !isBlocking;
+    }
+
+    private void ProcessRolling()
+    {
+        bool x = Input.GetKeyDown(KeyCode.LeftShift);
+        if (x)
+        {
+            x = true;
+        }
+        if (!isRolling && Input.GetKeyDown(KeyCode.LeftShift) && !IsBusy && Time.time - lastRollEnd > rollDelay)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            if (moveHorizontal == 0 && moveVertical == 0)
+            {
+                moveHorizontal = UnityEngine.Random.Range(0, 1) * 2 - 1; // -1 or 1
+            }
+            rolldirection = transform.forward * moveVertical + transform.right * moveHorizontal;
+            rollStartingPoint = transform.position;
+            IsBusy = true;
+            animator.SetBool("IsRolling", true);
+            isRolling = true;
+        }
+        if (isRolling)
+        {
+            if (Vector3.Distance(transform.position, rollStartingPoint) < rollDistance)
+            {
+                controller.Move(rolldirection * Time.deltaTime * rollSpeed);
+            }
+            else
+            {
+                lastRollEnd = Time.time;
+                rollDistanceLeft = 0;
+                animator.SetBool("IsRolling", false);
+                IsBusy = false;
+                isRolling = false;
+            }
+        }
     }
 
     public override void Interrupt()
     {
-        if (sword.IsAttacking)
-        {
-            sword.Interrupt();
-        }
+        animator.Play("Interrupt");
         if (healingAbility.IsHealing)
         {
             healingAbility.Interrupt();
