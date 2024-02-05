@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMana : UIStatusBar
 {
@@ -9,6 +10,12 @@ public class PlayerMana : UIStatusBar
     float startingValue;
     [SerializeField]
     float hitBonus;
+    [SerializeField]
+    float minMana;
+    [SerializeField]
+    Color StandardManaColor;
+    [SerializeField]
+    Color InsuficientManaColor;
 
     void Start()
     {
@@ -25,6 +32,7 @@ public class PlayerMana : UIStatusBar
             currentValue = 0;
         }
         SetBarFill(currentValue / maxValue);
+        UpdateBarColor();
     }
 
     public void AddMana(float AddedValue)
@@ -35,6 +43,7 @@ public class PlayerMana : UIStatusBar
             currentValue = maxValue;
         }
         SetBarFill(currentValue / maxValue);
+        UpdateBarColor();
     }
 
     internal void AddHitBonus()
@@ -45,5 +54,10 @@ public class PlayerMana : UIStatusBar
     public bool IsAvailable(float value)
     {
         return value <= currentValue;
+    }
+
+    private void UpdateBarColor()
+    {
+        UIBar.GetComponent<Image>().color = currentValue < minMana ? InsuficientManaColor : StandardManaColor;
     }
 }

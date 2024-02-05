@@ -45,7 +45,7 @@ public class ThirdPersonController : BaseContoller
     float rollDistanceLeft;
     float lastRollEnd = 0;
     Vector3 rollStartingPoint;
-    Vector3 rolldirection;
+    Vector3 rollDirection;
     bool isRolling;
 
     // Start is called before the first frame update
@@ -187,7 +187,7 @@ public class ThirdPersonController : BaseContoller
             {
                 moveHorizontal = UnityEngine.Random.Range(0, 1) * 2 - 1; // -1 or 1
             }
-            rolldirection = transform.forward * moveVertical + transform.right * moveHorizontal;
+            rollDirection = transform.forward * moveVertical + transform.right * moveHorizontal;
             rollStartingPoint = transform.position;
             IsBusy = true;
             animator.SetBool("IsRolling", true);
@@ -197,7 +197,7 @@ public class ThirdPersonController : BaseContoller
         {
             if (Vector3.Distance(transform.position, rollStartingPoint) < rollDistance)
             {
-                controller.Move(rolldirection * Time.deltaTime * rollSpeed);
+                controller.Move(rollDirection * Time.deltaTime * rollSpeed);
             }
             else
             {

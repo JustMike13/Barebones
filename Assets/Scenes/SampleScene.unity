@@ -744,21 +744,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 381301192814102319, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 432214465802765187, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: menu
       value: 
       objectReference: {fileID: 295781778}
     - target: {fileID: 432214465802765187, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: rollDelay
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 432214465802765187, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: rollSpeed
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 432214465802765187, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: rollDistance
-      value: 6
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861536821616280577, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861536821616280577, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861536821616280577, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1938433148586158327, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: m_LocalPosition.x
@@ -807,6 +823,66 @@ PrefabInstance:
     - target: {fileID: 3562393451123874381, guid: af90082dcf3f8914993aacb68193c863, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.77259606
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.029011544
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6338276
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02271789
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.918
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -78.763
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561987900711331719, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 4.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: minMana
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: StandardManaColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: StandardManaColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: StandardManaColor.g
+      value: 0.63529414
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: InsuficientManaColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: InsuficientManaColor.b
+      value: 0.9741319
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: InsuficientManaColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664222788167669089, guid: af90082dcf3f8914993aacb68193c863, type: 3}
+      propertyPath: InsuficientManaColor.r
+      value: 0.4009434
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
