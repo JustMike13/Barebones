@@ -8,8 +8,10 @@ public class Attack : MonoBehaviour
 {
     public const float SUCCESS = 0;
     public const float FAIL = -1;
+    
+    public CharacterManager characterManager;
     protected Animator animator;
-    public Animator Animator { get { return animator; } set { animator = value; } }
+    //public Animator Animator { get { return animator; } set { animator = value; } }
     protected BaseContoller controller;
     public BaseContoller Controller { get { return controller; } set { controller = value; } } 
     [SerializeField]
@@ -32,6 +34,11 @@ public class Attack : MonoBehaviour
     protected PlayerMana playerMana;
     bool setBusyByMe = false;
 
+    protected void Start() 
+    {
+        animator = characterManager.Animator;
+        playerMana = characterManager.PlayerMana;
+    }
     private void Update()
     {
         UpdateCooldown();

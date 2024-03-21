@@ -8,8 +8,11 @@ using UnityEngine.InputSystem;
 public class ThirdPersonController : BaseContoller
 {
     private CharacterController controller;
+    private CharacterManager characterManager;
     [SerializeField]
     private GameObject mainCamera;
+    [SerializeField]
+    Transform characterModel;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     [SerializeField]
@@ -25,7 +28,7 @@ public class ThirdPersonController : BaseContoller
     float speedUpTimeElapsed = 0;
     [SerializeField]
     float minSpeedMultiplier = 0f;
-    float maxSpeedMultiplier = 1f;
+    float maxSpeedMultiplier = 1f; 
     [SerializeField]
     SwordAttack sword;
     HealingAbility healingAbility;
@@ -47,14 +50,19 @@ public class ThirdPersonController : BaseContoller
     Vector3 rollStartingPoint;
     Vector3 rollDirection;
     bool isRolling;
+    [SerializeField]
+    AudioSource footsteps;
 
     // Start is called before the first frame update
     void Start()
     {
+        characterManager = GetComponent<CharacterManager>(); 
         controller = GetComponent<CharacterController>();
         healingAbility = GetComponent<HealingAbility>();
+        animator = characterManager.Animator;
         isStunned = false;
         sword.Controller = this;
+        healingAbility.Controller = this;
     }
 
     // Update is called once per frame
@@ -87,7 +95,13 @@ public class ThirdPersonController : BaseContoller
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        float sprint = 1f;//Input.GetAxis("Shift") > 0 && groundedPlayer ? sprintMultiplier : 1.0f;
+        //float sprint = 1f;//Input.GetAxis("Shift") > 0 && groundedPlayer ? sprintMultiplier : 1.0f;
+        float movementSum = (moveHorizontal >= 0 ? moveHorizontal : -moveHorizontal) + (moveVertical >= 0 ? moveVertical : -moveVertical);
+        if (movementSum > 0)
+        {
+            moveHorizontal = moveHorizontal / movementSum;
+            moveVertical = moveVertical / movementSum;
+        }
 
         if (moveHorizontal != 0 || moveVertical  != 0)
         {
@@ -109,15 +123,19 @@ public class ThirdPersonController : BaseContoller
         if (moveHorizontal != 0 || moveVertical != 0)
         {
             animator.SetBool("IsWalking", true);
+            footsteps.enabled = true;
             animator.SetBool("WalkingStraight", moveVertical != 0);
+            //animator.SetFloat("WalkVertical", moveVertical);
+            //animator.SetFloat("WalkHorizontal", moveHorizontal);
             animator.SetFloat("WalkSpeed", moveVertical < 0 ? speedMultiplier * -1 : speedMultiplier);
-            animator.SetFloat("StrafeSpeed", moveHorizontal < 0 ? speedMultiplier * -2 : speedMultiplier * 2);
-            controller.Move(transform.forward * moveVertical * Time.deltaTime * playerSpeed * speedMultiplier * sprint);
-            controller.Move(transform.right * moveHorizontal * Time.deltaTime * strafeSpeed * speedMultiplier);
+            animator.SetFloat("StrafeSpeed", moveHorizontal < 0 ? speedMultiplier * -1 : speedMultiplier * 1);
+            controller.Move((transform.forward * moveVertical + transform.right * moveHorizontal) * Time.deltaTime * playerSpeed * speedMultiplier);
+            //controller.Move(transform.right * moveHorizontal * Time.deltaTime * strafeSpeed * speedMultiplier);
         }
         else
         {
             animator.SetBool("IsWalking", false);
+            footsteps.enabled = false;
         }
 
 
@@ -174,11 +192,6 @@ public class ThirdPersonController : BaseContoller
 
     private void ProcessRolling()
     {
-        bool x = Input.GetKeyDown(KeyCode.LeftShift);
-        if (x)
-        {
-            x = true;
-        }
         if (!isRolling && Input.GetKeyDown(KeyCode.LeftShift) && !IsBusy && Time.time - lastRollEnd > rollDelay)
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -187,11 +200,14 @@ public class ThirdPersonController : BaseContoller
             {
                 moveHorizontal = UnityEngine.Random.Range(0, 1) * 2 - 1; // -1 or 1
             }
+            SetRollDirection(moveHorizontal, moveVertical);
             rollDirection = transform.forward * moveVertical + transform.right * moveHorizontal;
             rollStartingPoint = transform.position;
             IsBusy = true;
             animator.SetBool("IsRolling", true);
+            animator.Play("Roll");
             isRolling = true;
+            isInvulnerable = true;
         }
         if (isRolling)
         {
@@ -204,9 +220,27 @@ public class ThirdPersonController : BaseContoller
                 lastRollEnd = Time.time;
                 rollDistanceLeft = 0;
                 animator.SetBool("IsRolling", false);
+                characterModel.transform.rotation = transform.rotation;
                 IsBusy = false;
                 isRolling = false;
+                isInvulnerable = false;
             }
+        }
+    }
+
+    private void SetRollDirection(float horizontal, float vertical)
+    {
+        if (horizontal == 0 && vertical < 1)
+        {
+            characterModel.transform.Rotate(0, 180, 0);
+        }
+        else if (horizontal > 0)
+        {
+            characterModel.transform.Rotate(0, 90, 0);
+        }
+        else if(horizontal < 0)
+        {
+            characterModel.transform.Rotate(0, 270, 0);
         }
     }
 

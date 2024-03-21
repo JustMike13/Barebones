@@ -11,7 +11,11 @@ public class CharacterManager : MonoBehaviour
     public LevelManager LevelManager {  set { levelManager = value; } }
     BaseContoller controller;
     Health health;
+    [SerializeField]
     Animator animator;
+    public Animator Animator { get { return animator; } }
+    PlayerMana playerMana;
+    public PlayerMana PlayerMana { get {  return playerMana ; } }
     [SerializeField]
     List<Attack> attacks;
 
@@ -19,17 +23,18 @@ public class CharacterManager : MonoBehaviour
     {
         controller = GetComponent<BaseContoller>();
         health = GetComponent<Health>();
-        animator = GetComponent<Animator>();
-        foreach (Attack attack in attacks)
-        {
-            attack.Controller = controller;
-            attack.Animator = animator;
-        }
+        playerMana = GetComponent<PlayerMana>();
+        // TODO: Remove
+        //foreach (Attack attack in attacks)
+        //{
+        //    attack.Controller = controller;
+        //    attack.Animator = animator;
+        //}
     }
 
     public float Hit(float damage, bool canBeBlocked = false)
     {
-        if (controller != null)
+        if (controller != null && !controller.IsInvulnerable)
         {
             bool blocked = controller.IsBlocking();
             if (blocked && canBeBlocked)

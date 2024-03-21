@@ -13,7 +13,6 @@ public class LongRangeProjectile : MonoBehaviour
     void Start()
     {
         startingPosition = transform.position;
-        player = GameObject.Find("Player").transform;
         transform.LookAt(player.transform); 
     }
 
@@ -26,9 +25,10 @@ public class LongRangeProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void SetMembers(float ProjectileSpeed, float ProjectileMaxDistance )
+    public void SetMembers(float ProjectileSpeed, float ProjectileMaxDistance, Transform Player)
     {
         projectileSpeed = ProjectileSpeed;
         projectileMaxDistance = ProjectileMaxDistance;
+        player = Player;
     }
 }

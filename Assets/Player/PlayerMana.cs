@@ -19,7 +19,6 @@ public class PlayerMana : UIStatusBar
 
     void Start()
     {
-        UIBar = GameObject.FindGameObjectWithTag("PlayerMana");
         currentValue = 0;
         AddMana(startingValue);
     }
@@ -32,7 +31,10 @@ public class PlayerMana : UIStatusBar
             currentValue = 0;
         }
         SetBarFill(currentValue / maxValue);
-        UpdateBarColor();
+        if (currentValue < minMana) 
+        { 
+            UpdateBarColor(InsuficientManaColor);
+        }
     }
 
     public void AddMana(float AddedValue)
@@ -43,7 +45,10 @@ public class PlayerMana : UIStatusBar
             currentValue = maxValue;
         }
         SetBarFill(currentValue / maxValue);
-        UpdateBarColor();
+        if (currentValue >= minMana)
+        {
+            UpdateBarColor(StandardManaColor);
+        }
     }
 
     internal void AddHitBonus()
@@ -56,8 +61,8 @@ public class PlayerMana : UIStatusBar
         return value <= currentValue;
     }
 
-    private void UpdateBarColor()
+    private void UpdateBarColor(Color color)
     {
-        UIBar.GetComponent<Image>().color = currentValue < minMana ? InsuficientManaColor : StandardManaColor;
+        UIBar.GetComponent<Image>().color = color;
     }
 }

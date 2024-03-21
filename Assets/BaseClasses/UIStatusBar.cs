@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class UIStatusBar : MonoBehaviour
 {
     [SerializeField]
+    protected GameObject UIBar = null;
+    [SerializeField]
     protected float maxValue;
     protected float currentValue;
-    protected GameObject UIBar = null;
 
     void Start()
     {

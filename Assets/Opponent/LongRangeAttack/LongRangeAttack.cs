@@ -19,6 +19,8 @@ public class LongRangeAttack : Attack
     float chargeTime;
     [SerializeField]
     GameObject chargingFlames;
+    [SerializeField]
+    Transform player;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,7 @@ public class LongRangeAttack : Attack
             cooldownLeft = cooldown;
             projectileInstance = Instantiate(projectilePrefab, startingPosition, Quaternion.identity);
             projectileInstance.GetComponent<AttackCollider>().attack = this;
-            projectileInstance.GetComponent<LongRangeProjectile>().SetMembers(projectileSpeed, projectileMaxDistance);
+            projectileInstance.GetComponent<LongRangeProjectile>().SetMembers(projectileSpeed, projectileMaxDistance, player);
             chargingFlames.gameObject.SetActive(false);
             controller.IsAttacking = false;
         }
@@ -51,7 +53,8 @@ public class LongRangeAttack : Attack
 
     override public void ProcessCollider(Collider other)
     {
-        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        // TODO: Replace with CharacterManager
+        Health playerHealth = other.GetComponent<Health>();
         if (playerHealth == null)
         {
             return;

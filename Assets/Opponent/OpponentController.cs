@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class OpponentController : BaseContoller
 {
+    [SerializeField]
     Transform player;
 
     public float meleeRange = 5f;
@@ -30,7 +31,6 @@ public class OpponentController : BaseContoller
     void Awake()
     {
         GetAnimator();
-        player = GameObject.Find("Player").transform;
         timeSinceAttack = 0;
         foreach (var attack in attacks)
         {
@@ -77,11 +77,12 @@ public class OpponentController : BaseContoller
 
     override public void LookAtPlayer()
     {
+        Vector3 playerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
         if (player == null)
         {
             return;
         }
-        Vector3 relativePos = player.position - transform.position;
+        Vector3 relativePos = playerPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         Quaternion rotationDifference = Quaternion.Inverse(targetRotation) * transform.rotation;
         float angle = rotationDifference.eulerAngles.y;

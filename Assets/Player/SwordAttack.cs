@@ -15,14 +15,10 @@ public class SwordAttack : Attack
 
     private void Start()
     {
+        base.Start();
         if (parryIndicator)
         {
             animator = GetComponent<Animator>();
-        }
-        else
-        { 
-            animator = controller.Animator;
-            playerMana = transform.parent.parent.GetComponent<PlayerMana>();
         }
         isAttacking = false;
     }
@@ -68,7 +64,7 @@ public class SwordAttack : Attack
     override public void ProcessCollider(Collider other)
     {
         CharacterManager enemy = other.GetComponent<CharacterManager>();
-        if (enemy == null)
+        if (enemy == null || enemy == characterManager)
         { 
             return; 
         }

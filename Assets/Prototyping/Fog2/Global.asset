@@ -1428,7 +1428,7 @@ MonoBehaviour:
     overrideState: 0
     value: 2
   _UseDistanceFog:
-    overrideState: 0
+    overrideState: 1
     value: 1
   _UseRadialDistance:
     overrideState: 0

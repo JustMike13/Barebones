@@ -19,6 +19,9 @@ public class BaseContoller : MonoBehaviour
     bool isBusy;
     public bool IsBusy { get { return isBusy; } set { isBusy = value; } }
 
+    protected bool isInvulnerable = false;
+    public bool IsInvulnerable { get {  return isInvulnerable; } set {  IsInvulnerable = value; } }
+
     protected void GetAnimator()
     {
         animator = transform.GetComponent<Animator>();
