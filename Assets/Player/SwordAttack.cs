@@ -65,11 +65,11 @@ public class SwordAttack : Attack
     {
         CharacterManager enemy = other.GetComponent<CharacterManager>();
         if (enemy == null || enemy == characterManager)
-        { 
-            return; 
+        {
+            return;
         }
 
-        float hit = enemy.Hit(damage, canBeBlocked);
+        float hit = enemy.Hit(characterManager, damage, canBeBlocked);
         
         if (hit != SUCCESS && CorrectParry(hit))
         {

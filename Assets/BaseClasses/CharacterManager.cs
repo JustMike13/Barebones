@@ -18,6 +18,7 @@ public class CharacterManager : MonoBehaviour
     public PlayerMana PlayerMana { get {  return playerMana ; } }
     [SerializeField]
     List<Attack> attacks;
+    float blockAngle = 80.0f;
 
     void Start()
     {
@@ -32,24 +33,30 @@ public class CharacterManager : MonoBehaviour
         //}
     }
 
-    public float Hit(float damage, bool canBeBlocked = false)
+    public float Hit(CharacterManager Opponent, float Damage, bool CanBeBlocked = false)
     {
         if (controller != null && !controller.IsInvulnerable)
         {
             bool blocked = controller.IsBlocking();
-            if (blocked && canBeBlocked)
+            if (blocked && CanBeBlocked && IsFacing(Opponent))
             {
                 return controller.StartBlockingTime;
             }
             if (health != null)
             {
                 controller.Interrupt();
-                health.TakeDamage(damage);
+                health.TakeDamage(Damage);
                 return Attack.SUCCESS;
             }
         }
         return Attack.FAIL;
     }
+
+    private bool IsFacing(CharacterManager Opponent)
+    {
+        return (Vector3.Angle(transform.forward, Opponent.transform.position - transform.position) < blockAngle);
+    }
+
     public void Enable()
     {
         controller.enabled = true;

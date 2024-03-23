@@ -210,8 +210,8 @@ RenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 5
-  m_Width: 240
-  m_Height: 136
+  m_Width: 257
+  m_Height: 146
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 90
@@ -3242,7 +3242,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6180904, y: 2.0502512, z: 0}
+  m_LocalScale: {x: 3.6028037, y: 2.046729, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1900532184}
@@ -3800,7 +3800,7 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: -0.0038910506
     y: 0
     width: 1
     height: 1
@@ -3808,13 +3808,13 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 1.8425926
+  orthographic size: 1.9814814
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967263
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 20402240}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -4013,7 +4013,7 @@ MonoBehaviour:
   - {fileID: 1763443216}
   storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
   storedPixelMultiplier: 0
-  origOrthoSize: 1.8425926
+  origOrthoSize: 1.9814814
 --- !u!4 &1900532184
 Transform:
   m_ObjectHideFlags: 0
@@ -4024,7 +4024,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 999}
-  m_LocalScale: {x: 1.8425926, y: 1.8425926, z: 1.8425926}
+  m_LocalScale: {x: 1.9814814, y: 1.9814814, z: 1.9814814}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1522262044}
@@ -4412,7 +4412,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.8425926
+  orthographic size: 1.9814814
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -4586,9 +4586,9 @@ MonoBehaviour:
   graphicsFormat: 8
   pixelMultiplier: 3
   ditherRepeatSize: 2
-  lastScreenSize: {x: 708, y: 398}
-  screenSize: {x: 708, y: 398}
-  renderTextureSize: {x: 240, y: 136}
+  lastScreenSize: {x: 760, y: 428}
+  screenSize: {x: 760, y: 428}
+  renderTextureSize: {x: 257, y: 146}
   screenHeight: 1080
   uPixelatorCam: {fileID: 261395170351316450}
   autoDetectCameras: 0
@@ -4743,6 +4743,26 @@ PrefabInstance:
     - target: {fileID: 3224794217668661102, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
       propertyPath: projectileMaxDistance
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963219354479382258, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: m_Size.x
+      value: 5.1299915
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963219354479382258, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: m_Size.z
+      value: 123.76341
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963219354479382258, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: m_Center.x
+      value: -2.0650024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963219354479382258, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: m_Center.y
+      value: 0.13645373
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963219354479382258, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
+      propertyPath: m_Center.z
+      value: -62.38146
       objectReference: {fileID: 0}
     - target: {fileID: 4776452584259449632, guid: 3d16eac8b7e02644ba942a988077f1c6, type: 3}
       propertyPath: UIBar
