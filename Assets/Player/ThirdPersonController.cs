@@ -87,7 +87,7 @@ public class ThirdPersonController : BaseContoller
             playerVelocity.y = -1.0f;
         }
 
-        if (isStunned || IsBusy)
+        if (isStunned || IsBusy || isBlocking)
         {
             speedUpTimeElapsed = 0;
             return;
