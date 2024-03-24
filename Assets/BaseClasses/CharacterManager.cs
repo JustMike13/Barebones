@@ -37,6 +37,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (controller != null && !controller.IsInvulnerable)
         {
+            animator.SetTrigger("Hit");
             bool blocked = controller.IsBlocking();
             if (blocked && CanBeBlocked && IsFacing(Opponent))
             {

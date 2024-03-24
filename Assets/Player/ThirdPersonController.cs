@@ -246,7 +246,7 @@ public class ThirdPersonController : BaseContoller
 
     public override void Interrupt()
     {
-        animator.Play("Interrupt");
+        //animator.Play("Interrupt");
         if (healingAbility.IsHealing)
         {
             healingAbility.Interrupt();
