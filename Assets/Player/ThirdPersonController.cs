@@ -53,6 +53,9 @@ public class ThirdPersonController : BaseContoller
     [SerializeField]
     AudioSource footsteps;
 
+    float moveHorizontal;
+    float moveVertical;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,8 +96,8 @@ public class ThirdPersonController : BaseContoller
             return;
         }
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        moveHorizontal = Input.GetAxis("Horizontal");
+        moveVertical = Input.GetAxis("Vertical");
         //float sprint = 1f;//Input.GetAxis("Shift") > 0 && groundedPlayer ? sprintMultiplier : 1.0f;
         float movementSum = (moveHorizontal >= 0 ? moveHorizontal : -moveHorizontal) + (moveVertical >= 0 ? moveVertical : -moveVertical);
         if (movementSum > 0)
@@ -194,12 +197,6 @@ public class ThirdPersonController : BaseContoller
     {
         if (!isRolling && Input.GetKeyDown(KeyCode.LeftShift) && !IsBusy && Time.time - lastRollEnd > rollDelay)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            if (moveHorizontal == 0 && moveVertical == 0)
-            {
-                moveHorizontal = UnityEngine.Random.Range(0, 1) * 2 - 1; // -1 or 1
-            }
             SetRollDirection(moveHorizontal, moveVertical);
             rollDirection = transform.forward * moveVertical + transform.right * moveHorizontal;
             rollStartingPoint = transform.position;
@@ -230,6 +227,10 @@ public class ThirdPersonController : BaseContoller
 
     private void SetRollDirection(float horizontal, float vertical)
     {
+        if (moveHorizontal == moveVertical && moveVertical == 0)
+        {
+            moveHorizontal = UnityEngine.Random.Range(0, 1) * 2 - 1; // -1 or 1
+        }
         if (horizontal == 0 && vertical < 1)
         {
             characterModel.transform.Rotate(0, 180, 0);
