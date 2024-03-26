@@ -122,18 +122,28 @@ public class ThirdPersonController : BaseContoller
         float speedMultiplier = Mathf.InverseLerp(0f, speedUpTime, speedUpTimeElapsed);
         speedMultiplier = speedMultiplier * (maxSpeedMultiplier - minSpeedMultiplier) + minSpeedMultiplier;
 
-        //Vector3 move = new Vector3(moveHorizontal, 0, moveVertical);
         if (moveHorizontal != 0 || moveVertical != 0)
         {
-            animator.SetBool("IsWalking", true);
-            footsteps.enabled = true;
-            animator.SetBool("WalkingStraight", moveVertical != 0);
-            //animator.SetFloat("WalkVertical", moveVertical);
-            //animator.SetFloat("WalkHorizontal", moveHorizontal);
-            animator.SetFloat("WalkSpeed", moveVertical < 0 ? speedMultiplier * -1 : speedMultiplier);
-            animator.SetFloat("StrafeSpeed", moveHorizontal < 0 ? speedMultiplier * -1 : speedMultiplier * 1);
+            // Movement
             controller.Move((transform.forward * moveVertical + transform.right * moveHorizontal) * Time.deltaTime * playerSpeed * speedMultiplier);
-            //controller.Move(transform.right * moveHorizontal * Time.deltaTime * strafeSpeed * speedMultiplier);
+            // Sound
+            footsteps.enabled = true;
+            // Animation
+            animator.SetBool("IsWalking", true);
+            animator.SetBool("WalkingStraight", moveVertical != 0);
+            animator.SetFloat("WalkSpeed", moveVertical < 0 ? -1 : 1);
+            animator.SetFloat("StrafeSpeed", moveHorizontal < 0 ? -1 : 1);
+            animator.SetBool("Strafing", moveHorizontal != 0);
+            //if (moveVertical == 0 || moveHorizontal == 0)
+            //{
+            //    animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), 1f);
+            //    animator.SetLayerWeight(animator.GetLayerIndex("Strafing"), 0f);
+            //}
+            //else
+            //{
+            //    animator.SetLayerWeight(animator.GetLayerIndex("Base Layer"), moveVertical < 0 ? moveVertical * -1 : moveVertical);
+            //    animator.SetLayerWeight(animator.GetLayerIndex("Strafing"), moveHorizontal < 0 ? moveHorizontal * -1: moveHorizontal);
+            //}
         }
         else
         {
