@@ -1,6 +1,8 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +12,7 @@ public class ThirdPersonController : BaseContoller
     // Inspector variables
     [Header("Object References")]
     [SerializeField]
-    private GameObject mainCamera;
+    private CinemachineVirtualCamera mainCamera;
     [SerializeField]
     SwordAttack sword;
     [SerializeField]
@@ -18,7 +20,7 @@ public class ThirdPersonController : BaseContoller
     [SerializeField]
     Transform characterModel;
     [SerializeField]
-    AudioSource footsteps; 
+    AudioSource footsteps;
     [Header("Character values")]
     [SerializeField]
     private float playerSpeed = 10.0f;
@@ -32,6 +34,15 @@ public class ThirdPersonController : BaseContoller
     float rollDistance;
     [SerializeField]
     float rollDelay;
+    [Header("Camera")]
+    [SerializeField]
+    private float x_sensitivity = 2.0f;
+    [SerializeField]
+    private float y_sensitivity = 0.2f;
+    [SerializeField]
+    private float minCameraY = 2.5f;
+    [SerializeField]
+    private float maxCameraY = 4.5f;
 
     private CharacterController controller;
     private CharacterManager characterManager;
@@ -39,7 +50,6 @@ public class ThirdPersonController : BaseContoller
     private bool groundedPlayer;
     private float jumpHeight = 1.0f;
     private float gravityValue = -18.0f;
-    private float sensitivity = 2.0f;
     float speedUpTimeElapsed = 0;
     float maxSpeedMultiplier = 1f; 
     HealingAbility healingAbility;
@@ -168,9 +178,12 @@ public class ThirdPersonController : BaseContoller
         }
         //camera rotation by mouse
         float mouse = Input.GetAxis("Mouse X");
-        transform.Rotate(new Vector3(0, mouse * sensitivity, 0));
-        //mouse = Input.GetAxis("Mouse Y");
+        transform.Rotate(new Vector3(0, mouse * x_sensitivity, 0));
+        mouse = Input.GetAxis("Mouse Y");
         //mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
+        Cinemachine3rdPersonFollow camera = mainCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+        camera.ShoulderOffset.y = Mathf.Clamp(camera.ShoulderOffset.y - mouse * y_sensitivity, minCameraY, maxCameraY);
+
     }
     
     private void ProcessAttacking()

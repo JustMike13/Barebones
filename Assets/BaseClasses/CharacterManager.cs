@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
+    // Inspector variables
+    [Header("Object References")]
+    [SerializeField]
+    CameraShake cameraShake;
+    [SerializeField]
+    List<Attack> attacks;
     bool isPlayer;
     public bool IsPlayer {  set { isPlayer = value; } }
     LevelManager levelManager;
@@ -16,8 +22,6 @@ public class CharacterManager : MonoBehaviour
     public Animator Animator { get { return animator; } }
     PlayerMana playerMana;
     public PlayerMana PlayerMana { get {  return playerMana ; } }
-    [SerializeField]
-    List<Attack> attacks;
     float blockAngle = 80.0f;
 
     void Start()
@@ -47,6 +51,7 @@ public class CharacterManager : MonoBehaviour
             {
                 controller.Interrupt();
                 health.TakeDamage(Damage);
+                CameraShakeOnHit();
                 return Attack.SUCCESS;
             }
         }
@@ -80,5 +85,31 @@ public class CharacterManager : MonoBehaviour
         {
             levelManager.Victory();
         }
+    }
+
+    public void AddHitBonus()
+    {
+        if (playerMana != null)
+        {
+            playerMana.AddHitBonus();
+        }
+    }
+
+    public void CameraShakeOnAttack()
+    {
+        // TODO: Add SerializeField variables for this values;
+        if (cameraShake != null)
+        {
+            cameraShake.ShakeCamera(0.5f, 0.1f);
+        }
+    }
+
+    public void CameraShakeOnHit()
+    {
+        // TODO: Add SerializeField variables for this values;
+        if (cameraShake != null)
+        {
+            cameraShake.ShakeCamera(2f, 0.1f);
+        } 
     }
 }

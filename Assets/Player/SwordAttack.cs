@@ -76,9 +76,10 @@ public class SwordAttack : Attack
             controller.GetStunned();
         }
 
-        if (hit == SUCCESS && playerMana != null)
+        if (hit == SUCCESS)
         {
-            playerMana.AddHitBonus();
+            characterManager.AddHitBonus();
+            characterManager.CameraShakeOnAttack();
         }
     }
 
