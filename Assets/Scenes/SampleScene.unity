@@ -194,6 +194,7 @@ Transform:
   - {fileID: 394719178}
   - {fileID: 295781777}
   - {fileID: 1703590266435735456}
+  - {fileID: 163086394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!84 &20402240
@@ -210,8 +211,8 @@ RenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 5
-  m_Width: 224
-  m_Height: 128
+  m_Width: 262
+  m_Height: 149
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 90
@@ -416,14 +417,14 @@ Transform:
   m_GameObject: {fileID: 163086393}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.9, z: -15.22}
+  m_LocalPosition: {x: 366.54, y: 2.9, z: 289.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1347882986}
   - {fileID: 1844081178}
   - {fileID: 1237592337}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 17771167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &163086395
 MonoBehaviour:
@@ -484,14 +485,14 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 400
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse X
@@ -516,7 +517,7 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 2
+  m_BindingMode: 3
   m_SplineCurvature: 0.235
   m_Orbits:
   - m_Height: 4.5
@@ -1067,7 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 2
+  m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 2.9, z: -5}
   m_XDamping: 1
   m_YDamping: 1
@@ -1267,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 2
+  m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 2.9, z: -5}
   m_XDamping: 1
   m_YDamping: 1
@@ -1922,7 +1923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00801701ebd647040b569858f30ec287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Walking
+  audioSourceName: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 2
+  m_BindingMode: 3
   m_FollowOffset: {x: 0, y: 2.9, z: -5}
   m_XDamping: 1
   m_YDamping: 1
@@ -2657,7 +2658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237592336}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.022196334, y: -0.0000000021502653, z: -4.7739774e-11, w: 0.99975365}
+  m_LocalRotation: {x: -0.022196334, y: 0.0000000021502682, z: 4.773984e-11, w: 0.99975365}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2736,7 +2737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347882985}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.014134319, y: 3e-45, z: -0, w: 0.9999001}
+  m_LocalRotation: {x: 0.014134319, y: 1e-45, z: -0, w: 0.9999001}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2815,18 +2816,16 @@ MonoBehaviour:
   isStunned: 0
   isBusy: 0
   mainCamera: {fileID: 2032754362}
+  sword: {fileID: 336054283}
+  menu: {fileID: 295781778}
   characterModel: {fileID: 0}
+  footsteps: {fileID: 2011933783}
   playerSpeed: 10
-  strafeSpeed: 10
   speedUpTime: 1
   minSpeedMultiplier: 0.2
-  sword: {fileID: 336054283}
-  deathCameraPrefab: {fileID: 0}
-  menu: {fileID: 295781778}
   rollSpeed: 30
   rollDistance: 10
   rollDelay: 0.3
-  footsteps: {fileID: 2011933783}
 --- !u!143 &1410531124
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3064,7 +3063,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.6129034, y: 2.064516, z: 0}
+  m_LocalScale: {x: 3.6055048, y: 2.0504587, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1900532184}
@@ -3302,7 +3301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763443209}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004055693, y: -0.0000000010753901, z: -4.361487e-12, w: 0.9999918}
+  m_LocalRotation: {x: -0.004055693, y: -0, z: -0, w: 0.9999918}
   m_LocalPosition: {x: 0, y: 2.0488908, z: -3.5325704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3451,14 +3450,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: -0.0067114094
     width: 1
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
   orthographic: 0
-  orthographic size: 1.7222222
+  orthographic size: 2.0185184
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3601,7 +3600,7 @@ MonoBehaviour:
     orthographicSizeCorrection: {fileID: 0}
   snappables:
   - {fileID: 877049410913368446}
-  storedCamRotation: {x: -0.004055687, y: -0.000000030722802, z: -1.2460309e-10, w: 0.9999918}
+  storedCamRotation: {x: -0.004055693, y: -6.4521966e-10, z: -2.616835e-12, w: 0.9999918}
   storedPixelMultiplier: 3
   origOrthoSize: 0
 --- !u!4 &1769284024
@@ -3644,7 +3643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844081177}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0040556937, y: -5.376956e-10, z: -2.1807467e-12, w: 0.9999918}
+  m_LocalRotation: {x: -0.004055693, y: -1e-45, z: -0, w: 0.9999918}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3776,7 +3775,7 @@ MonoBehaviour:
   - {fileID: 1763443216}
   storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
   storedPixelMultiplier: 0
-  origOrthoSize: 1.7222222
+  origOrthoSize: 2.0185184
 --- !u!4 &1900532184
 Transform:
   m_ObjectHideFlags: 0
@@ -3787,7 +3786,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4999}
-  m_LocalScale: {x: 1.7222222, y: 1.7222222, z: 1.7222222}
+  m_LocalScale: {x: 2.0185184, y: 2.0185184, z: 2.0185184}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1522262044}
@@ -3939,7 +3938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00801701ebd647040b569858f30ec287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Walking
+  audioSourceName: 
 --- !u!1 &2032754362
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,7 +4174,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 1.7222222
+  orthographic size: 2.0185184
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -4242,7 +4241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8082941803106655370}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004055693, y: -0.0000000010753901, z: -4.361487e-12, w: 0.9999918}
+  m_LocalRotation: {x: -0.004055693, y: -0, z: -0, w: 0.9999918}
   m_LocalPosition: {x: 366.54, y: 2.9, z: 289.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4288,9 +4287,9 @@ MonoBehaviour:
   graphicsFormat: 8
   pixelMultiplier: 3
   ditherRepeatSize: 2
-  lastScreenSize: {x: 662, y: 372}
-  screenSize: {x: 662, y: 372}
-  renderTextureSize: {x: 224, y: 128}
+  lastScreenSize: {x: 775, y: 436}
+  screenSize: {x: 775, y: 436}
+  renderTextureSize: {x: 262, y: 149}
   screenHeight: 1080
   uPixelatorCam: {fileID: 261395170351316450}
   autoDetectCameras: 0
@@ -5156,4 +5155,3 @@ SceneRoots:
   - {fileID: 1850399535}
   - {fileID: 522681722}
   - {fileID: 3407273732895262935}
-  - {fileID: 163086394}

@@ -17,7 +17,7 @@ public class AudioPlayer : MonoBehaviour
     {
         foreach (AudioSrc src in sources)
         {
-            if (src.name == soundName)
+            if (src.audioSourceName == soundName)
             {
                 src.Play();
             }
@@ -28,7 +28,7 @@ public class AudioPlayer : MonoBehaviour
     {
         foreach (AudioSrc src in sources)
         {
-            if (src.name == soundName)
+            if (src.audioSourceName == soundName)
             {
                 src.Stop();
             }

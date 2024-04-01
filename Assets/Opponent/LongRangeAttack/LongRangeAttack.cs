@@ -23,7 +23,7 @@ public class LongRangeAttack : Attack
     Transform player;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         controller = transform.parent.GetComponent<BaseContoller>();
         projectileInstance = null;

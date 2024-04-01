@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioSrc : MonoBehaviour
 {
     [SerializeField]
-    public string name;
+    public string audioSourceName;
     bool isPlaying = false;
     public bool IsPlaying {  get { return isPlaying; } }
 

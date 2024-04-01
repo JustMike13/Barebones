@@ -7,51 +7,48 @@ using UnityEngine.InputSystem;
 
 public class ThirdPersonController : BaseContoller
 {
-    private CharacterController controller;
-    private CharacterManager characterManager;
+    // Inspector variables
+    [Header("Object References")]
     [SerializeField]
     private GameObject mainCamera;
     [SerializeField]
+    SwordAttack sword;
+    [SerializeField]
+    OverlayMenu menu;
+    [SerializeField]
     Transform characterModel;
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
+    [SerializeField]
+    AudioSource footsteps; 
+    [Header("Character values")]
     [SerializeField]
     private float playerSpeed = 10.0f;
     [SerializeField]
-    private float strafeSpeed = 5.0f;
-    private float jumpHeight = 1.0f;
-    private float gravityValue = -18.0f;
-    private float sensitivity = 2.0f;
-    private float sprintMultiplier = 1.7f;
-    [SerializeField]
     float speedUpTime = 1f;
-    float speedUpTimeElapsed = 0;
     [SerializeField]
     float minSpeedMultiplier = 0f;
-    float maxSpeedMultiplier = 1f; 
-    [SerializeField]
-    SwordAttack sword;
-    HealingAbility healingAbility;
-    bool lockRotation = false;
-    public bool LockRotation {  get { return lockRotation; } set {  lockRotation = value; } }
-    [SerializeField]
-    GameObject deathCameraPrefab;
-    [SerializeField]
-    OverlayMenu menu;
-    //Roll
     [SerializeField]
     float rollSpeed;
     [SerializeField]
     float rollDistance;
     [SerializeField]
     float rollDelay;
-    float rollDistanceLeft;
+
+    private CharacterController controller;
+    private CharacterManager characterManager;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -18.0f;
+    private float sensitivity = 2.0f;
+    float speedUpTimeElapsed = 0;
+    float maxSpeedMultiplier = 1f; 
+    HealingAbility healingAbility;
+    bool lockRotation = false;
+    public bool LockRotation {  get { return lockRotation; } set {  lockRotation = value; } }
     float lastRollEnd = 0;
     Vector3 rollStartingPoint;
     Vector3 rollDirection;
     bool isRolling;
-    [SerializeField]
-    AudioSource footsteps;
 
     float moveHorizontal;
     float moveVertical;
@@ -172,8 +169,8 @@ public class ThirdPersonController : BaseContoller
         //camera rotation by mouse
         float mouse = Input.GetAxis("Mouse X");
         transform.Rotate(new Vector3(0, mouse * sensitivity, 0));
-        mouse = Input.GetAxis("Mouse Y");
-        mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
+        //mouse = Input.GetAxis("Mouse Y");
+        //mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
     }
     
     private void ProcessAttacking()
@@ -225,7 +222,6 @@ public class ThirdPersonController : BaseContoller
             else
             {
                 lastRollEnd = Time.time;
-                rollDistanceLeft = 0;
                 animator.SetBool("IsRolling", false);
                 characterModel.transform.rotation = transform.rotation;
                 IsBusy = false;

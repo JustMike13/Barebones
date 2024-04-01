@@ -13,7 +13,7 @@ public class SwordAttack : Attack
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     bool oldIsAttacking;
 
-    private void Start()
+    private new void Start()
     {
         base.Start();
         if (parryIndicator)

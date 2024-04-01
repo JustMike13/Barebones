@@ -21,7 +21,7 @@ public class HealingAbility : Attack
     Health playerHealth;
     int stepsCompleted = 0;
 
-    void Start()
+    new void Start()
     {
         playerMana = GetComponent<PlayerMana>();
         playerHealth = GetComponent<Health>();
