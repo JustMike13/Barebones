@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2156297071124905940
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BrickAndStuccoMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 1b5483f28725035439bd193a20ee8bb9, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_2dabd38f5382409f955fe27cb48f0d9d_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 2dff4efb13bd56045acc8d130386b543, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3ec68f482cda432e9cc582149f6d4e51_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 44075e1d3e2ac6d45be6320832717eaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5c4fafce64404ef9bae287d83ba5ede5_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 8ff870561c349bf4d9efdecd435358f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7d86ee47b8cc4442bfce6e5f13bf46f8_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: acfaa79804f33c24c99533265f24c11a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_85fd1058009a4fe090164388ea11c75c_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 8fe6a74c9b5c92d4080baafc304e4c81, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_97d78cd78ee44f57aebe6dd555013a7c_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 8df02d292582db544942089b62e21c89, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_9ea0bc7f553e47f5acb5ab734fd8ed94_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: dd9aa05840c3bb34bbbd3aafe0fef6a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_9f22ca4f7331436cafeab7621c047428_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 607530e3a3ab0eb449bc02af9bd2468b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b3a8793446b042c083ed092a991f1fe2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 6e7ea42d9d7262341b96f7b3e9b2d6b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_db71334da6aa4d73993e2189de7830e3_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: efd7be9b29e2e2444a57b0fe299a0cc4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_f7994a8616a8407faac7afb80e81b6c1_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 80d57bd21751e404685d7554bf996434, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Seed: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
