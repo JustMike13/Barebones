@@ -26065,7 +26065,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.53333336
+        time: 0.56666666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -26083,7 +26083,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.5000001
+        time: 1.5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -26095,7 +26095,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/SwordPivot/Sword
+    path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/SwordPivot/SwordCollider
     classID: 65
     script: {fileID: 0}
     flags: 0
@@ -26117,7 +26117,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 4208485885
+      path: 1916965862
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 65
@@ -53365,7 +53365,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.53333336
+        time: 0.56666666
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -53383,7 +53383,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.5000001
+        time: 1.5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -53395,7 +53395,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/SwordPivot/Sword
+    path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/SwordPivot/SwordCollider
     classID: 65
     script: {fileID: 0}
     flags: 0
