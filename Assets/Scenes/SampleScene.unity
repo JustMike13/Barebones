@@ -4781,10 +4781,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2026009759661108168, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8192926e3a4ed04d90b015a97c413d5, type: 2}
     - target: {fileID: 2125706950467135011, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3814836714223805201, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8eacb6f5b2362ac409a454ec22a743fc, type: 2}
+    - target: {fileID: 4077881845731303954, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f62d54df85891f647b63c4f20f0a8960, type: 2}
     - target: {fileID: 4498305112207131770, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: cameraShake
       value: 
