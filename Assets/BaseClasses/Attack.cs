@@ -11,7 +11,7 @@ public class Attack : MonoBehaviour
     
     public CharacterManager characterManager;
     protected Animator animator;
-    //public Animator Animator { get { return animator; } set { animator = value; } }
+    //public Animator Animator { set { animator = value; } }
     protected BaseContoller controller;
     public BaseContoller Controller { get { return controller; } set { controller = value; } } 
     [SerializeField]
@@ -32,7 +32,7 @@ public class Attack : MonoBehaviour
     public bool parryWindowOn;
     protected bool oldParryWindowOn;
     protected PlayerMana playerMana;
-    bool setBusyByMe = false;
+    bool setBusyByThis = false;
 
     protected void Start() 
     {
@@ -64,15 +64,16 @@ public class Attack : MonoBehaviour
         return canBeParried && blockingTime >= parryWindow.x && blockingTime <= parryWindow.y;
     }
 
-    public bool SetBusy()
+    public bool SetBusy(bool isAttacking = false)
     {
         if (!controller.IsBusy)
         {
             controller.IsBusy = true;
-            setBusyByMe = true;
+            controller.IsAttacking = isAttacking;
+            setBusyByThis = true;
             return true;
         }
-        else if (setBusyByMe)
+        else if (setBusyByThis)
         {
             return true;
         }
@@ -82,10 +83,11 @@ public class Attack : MonoBehaviour
 
     public void NotBusy()
     {
-        if (setBusyByMe) 
+        if (setBusyByThis) 
         { 
             controller.IsBusy = false;
-            setBusyByMe = false;
+            controller.IsAttacking = false;
+            setBusyByThis = false;
         }
     }
 }

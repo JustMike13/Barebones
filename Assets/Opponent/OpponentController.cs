@@ -16,7 +16,6 @@ public class OpponentController : BaseContoller
     Vector2 attackDelayRange;
     float attackDelay = 1f;
     float timeSinceAttack;
-    [SerializeField]
     List<Attack> attacks;
     [SerializeField]
     GameObject parryIndicator;
@@ -30,18 +29,15 @@ public class OpponentController : BaseContoller
 
     void Awake()
     {
-        GetAnimator();
+        characterManager = GetComponent<CharacterManager>();
+        animator = characterManager.Animator;
+        attacks = characterManager.Attacks;
         timeSinceAttack = 0;
-        foreach (var attack in attacks)
-        {
-            attack.Controller = this;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (!menu.IsGameON())
         {
             return;
@@ -119,6 +115,11 @@ public class OpponentController : BaseContoller
         if (Vector3.Distance(transform.position, player.position) > meleeRange && isFacingPlayer)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
         }
     }
 }

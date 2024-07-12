@@ -23,12 +23,8 @@ public class BaseContoller : MonoBehaviour
 
     protected bool isInvulnerable = false;
     public bool IsInvulnerable { get {  return isInvulnerable; } set {  IsInvulnerable = value; } }
-    
-    protected void GetAnimator()
-    {
-        animator = transform.GetComponent<Animator>();
-    }
 
+    protected CharacterManager characterManager;
     public bool IsBlocking()
     { 
         if (!isStunned)

@@ -8,7 +8,6 @@ public class SwordAttack : Attack
 {
     [SerializeField]
     bool parryIndicator;
-    [HideInInspector]
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     bool oldIsAttacking;
@@ -16,10 +15,6 @@ public class SwordAttack : Attack
     private new void Start()
     {
         base.Start();
-        if (parryIndicator)
-        {
-            animator = GetComponent<Animator>();
-        }
         isAttacking = false;
     }
 
@@ -27,6 +22,7 @@ public class SwordAttack : Attack
     {
         UpdateCooldown();
         ProcessParry();
+        // TODO: Move blocking to controller
         if (animator != null)
         {
             if (controller.IsBlocking())
@@ -86,7 +82,7 @@ public class SwordAttack : Attack
 
     override public void UseAttack()
     {
-        if (SetBusy())
+        if (SetBusy(true))
         {
             animator.Play("Attack");
             cooldownLeft = cooldown;

@@ -11,6 +11,8 @@ public class CharacterManager : MonoBehaviour
     CameraShake cameraShake;
     [SerializeField]
     List<Attack> attacks;
+    public List<Attack> Attacks { get { return attacks; } }
+
     bool isPlayer;
     public bool IsPlayer {  set { isPlayer = value; } }
     LevelManager levelManager;
@@ -29,6 +31,10 @@ public class CharacterManager : MonoBehaviour
         controller = GetComponent<BaseContoller>();
         health = GetComponent<Health>();
         playerMana = GetComponent<PlayerMana>();
+        foreach (var attack in attacks)
+        {
+            attack.Controller = controller;
+        }
         // TODO: Remove
         //foreach (Attack attack in attacks)
         //{

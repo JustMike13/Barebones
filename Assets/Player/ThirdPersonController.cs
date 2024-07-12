@@ -45,7 +45,6 @@ public class ThirdPersonController : BaseContoller
     private float maxCameraY = 4.5f;
 
     private CharacterController controller;
-    private CharacterManager characterManager;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float jumpHeight = 1.0f;
