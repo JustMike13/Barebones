@@ -32,7 +32,7 @@ public class Attack : MonoBehaviour
     public bool parryWindowOn;
     protected bool oldParryWindowOn;
     protected PlayerMana playerMana;
-    bool setBusyByThis = false;
+    protected bool setBusyByThis = false;
 
     protected void Start() 
     {
@@ -89,5 +89,9 @@ public class Attack : MonoBehaviour
             controller.IsAttacking = false;
             setBusyByThis = false;
         }
+    }
+
+    public virtual void MovementWhileAttacking()
+    {
     }
 }

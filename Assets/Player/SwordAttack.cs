@@ -10,7 +10,7 @@ public class SwordAttack : Attack
     bool parryIndicator;
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
-    bool oldIsAttacking;
+    protected bool oldIsAttacking;
 
     private new void Start()
     {
@@ -41,7 +41,7 @@ public class SwordAttack : Attack
         oldIsAttacking = isAttacking;
     }
 
-    private void ProcessParry()
+    protected void ProcessParry()
     {
         if (parryWindowOn && !oldParryWindowOn)
         {
@@ -57,7 +57,7 @@ public class SwordAttack : Attack
         oldParryWindowOn = parryWindowOn;
     }
 
-    override public void ProcessCollider(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         CharacterManager enemy = other.GetComponent<CharacterManager>();
         if (enemy == null || enemy == characterManager)

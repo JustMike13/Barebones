@@ -50,4 +50,12 @@ public class BaseContoller : MonoBehaviour
     }
 
     public virtual void Interrupt() { }
+
+    public void MoveCharacter(Vector3 movement)
+    {
+        if (movement != Vector3.zero)
+        {
+            transform.Translate(movement);
+        }
+    }
 }

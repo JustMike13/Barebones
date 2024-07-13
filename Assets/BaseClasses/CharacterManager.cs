@@ -116,6 +116,10 @@ public class CharacterManager : MonoBehaviour
         if (cameraShake != null)
         {
             cameraShake.ShakeCamera(2f, 0.1f);
-        } 
+        }
+    }
+    public void MoveCharacter(Vector3 movement)
+    {
+        controller.MoveCharacter(movement);
     }
 }
