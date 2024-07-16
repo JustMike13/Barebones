@@ -63,7 +63,7 @@ public class OpponentController : BaseContoller
             }
         }
         ProcessParryIndicator();
-        GetComponent<CharacterController>().enabled = !IsAttacking;
+        //GetComponent<CharacterController>().enabled = !IsAttacking;
     }
 
     private void ProcessParryIndicator()

@@ -11,6 +11,7 @@ public class CharacterManager : MonoBehaviour
     CameraShake cameraShake;
     [SerializeField]
     List<Attack> attacks;
+    [SerializeField] bool HitsStopAttacks = false;
     public List<Attack> Attacks { get { return attacks; } }
 
     bool isPlayer;
@@ -47,7 +48,10 @@ public class CharacterManager : MonoBehaviour
     {
         if (controller != null && !controller.IsInvulnerable)
         {
-            animator.SetTrigger("Hit");
+            if (!controller.IsAttacking || HitsStopAttacks)
+            {
+                animator.SetTrigger("Hit");
+            }
             bool blocked = controller.IsBlocking();
             if (blocked && CanBeBlocked && IsFacing(Opponent))
             {

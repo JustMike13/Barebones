@@ -1815,6 +1815,7 @@ MonoBehaviour:
   - {fileID: 320088620}
   - {fileID: 111436217}
   - {fileID: 682576419}
+  HitsStopAttacks: 1
   animator: {fileID: 1205304163}
 --- !u!1 &504221866
 GameObject:
@@ -4007,6 +4008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   attacks: []
+  HitsStopAttacks: 0
   animator: {fileID: 0}
 --- !u!114 &1410531130
 MonoBehaviour:
