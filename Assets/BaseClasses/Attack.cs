@@ -8,12 +8,12 @@ public class Attack : MonoBehaviour
 {
     public const float SUCCESS = 0;
     public const float FAIL = -1;
-    
+
     public CharacterManager characterManager;
     protected Animator animator;
     //public Animator Animator { set { animator = value; } }
     protected BaseContoller controller;
-    public BaseContoller Controller { get { return controller; } set { controller = value; } } 
+    public BaseContoller Controller { get { return controller; } set { controller = value; } }
     [SerializeField]
     protected int damage;
     [SerializeField]
@@ -88,10 +88,28 @@ public class Attack : MonoBehaviour
             controller.IsBusy = false;
             controller.IsAttacking = false;
             setBusyByThis = false;
+            controller.ResetTimeSinceAttack();
         }
     }
 
     public virtual void MovementWhileAttacking()
     {
+    }
+    protected void ProcessParry()
+    {
+        if (parryWindowOn && !oldParryWindowOn)
+        {
+            parryWindow.x = Time.time;
+            parryWindow.y = Mathf.Infinity;
+            parryWindowOn = true;
+            characterManager.ParryIndicatorOn(parryWindowOn);
+        }
+        else if (!parryWindowOn && oldParryWindowOn)
+        {
+            parryWindow.y = Time.time;
+            parryWindowOn = false;
+            characterManager.ParryIndicatorOn(parryWindowOn); 
+        }
+        oldParryWindowOn = parryWindowOn;
     }
 }

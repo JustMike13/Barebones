@@ -13,6 +13,8 @@ public class CharacterManager : MonoBehaviour
     List<Attack> attacks;
     [SerializeField] bool HitsStopAttacks = false;
     public List<Attack> Attacks { get { return attacks; } }
+    [SerializeField]
+    GameObject parryIndicator;
 
     bool isPlayer;
     public bool IsPlayer {  set { isPlayer = value; } }
@@ -42,6 +44,10 @@ public class CharacterManager : MonoBehaviour
         //    attack.Controller = controller;
         //    attack.Animator = animator;
         //}
+        if (parryIndicator != null)
+        {
+            parryIndicator.SetActive(false);
+        }
     }
 
     public float Hit(CharacterManager Opponent, float Damage, bool CanBeBlocked = false)
@@ -125,5 +131,14 @@ public class CharacterManager : MonoBehaviour
     public void MoveCharacter(Vector3 movement)
     {
         controller.MoveCharacter(movement);
+    }
+
+    internal void ParryIndicatorOn(bool parryWindowOn)
+    {
+        if ( parryIndicator != null )
+        {
+            Debug.Log("Parry indicator: " + parryWindowOn);
+            parryIndicator.SetActive(parryWindowOn);
+        }
     }
 }

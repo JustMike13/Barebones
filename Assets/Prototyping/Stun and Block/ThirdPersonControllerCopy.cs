@@ -86,7 +86,7 @@ public class ThirdPersonControllerCopy : MonoBehaviour
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        controller.Move(playerVelocity * Time.deltaTime); 
     }
 
     private void ProcessCameraRotation()
@@ -96,14 +96,5 @@ public class ThirdPersonControllerCopy : MonoBehaviour
         transform.Rotate(new Vector3(0, mouse * sensitivity, 0));
         mouse = Input.GetAxis("Mouse Y");
         mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
-    }
-
-
-    public void GetStunned()
-    {
-        if (animator != null)
-        {
-            animator.Play("Stunned");
-        }
     }
 }

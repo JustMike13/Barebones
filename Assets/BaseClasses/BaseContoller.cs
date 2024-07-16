@@ -38,7 +38,9 @@ public class BaseContoller : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.Play("Stunned");
+            // TODO: Change this
+            //animator.Play("Stunned");
+            animator.Play("Interrupt");
         }
     }
 
@@ -58,4 +60,6 @@ public class BaseContoller : MonoBehaviour
             transform.Translate(movement);
         }
     }
+
+    virtual public void ResetTimeSinceAttack() { }
 }

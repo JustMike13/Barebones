@@ -16,9 +16,8 @@ public class OpponentController : BaseContoller
     Vector2 attackDelayRange;
     float attackDelay = 1f;
     float timeSinceAttack;
+    [SerializeField] 
     List<Attack> attacks;
-    [SerializeField]
-    GameObject parryIndicator;
     [SerializeField]
     float rotationSpeed = 1f;
     bool isFacingPlayer = false;
@@ -47,7 +46,7 @@ public class OpponentController : BaseContoller
         if (!isStunned && !IsAttacking)
         {
             LookAtPlayer();
-            if (timeSinceAttack > attackDelay)
+            if (timeSinceAttack > attackDelay && isFacingPlayer)
             {
                 UpdateAttackDelay();
                 Attack attack = ChooseAttack();
@@ -62,13 +61,6 @@ public class OpponentController : BaseContoller
                 FollowPlayer();
             }
         }
-        ProcessParryIndicator();
-        //GetComponent<CharacterController>().enabled = !IsAttacking;
-    }
-
-    private void ProcessParryIndicator()
-    {
-        parryIndicator.SetActive(attacks.Any(a => a.parryWindowOn));
     }
 
     override public void LookAtPlayer()
@@ -121,5 +113,10 @@ public class OpponentController : BaseContoller
         {
             animator.SetBool("IsWalking", false);
         }
+    }
+
+    override public void ResetTimeSinceAttack()
+    {
+        timeSinceAttack = 0;
     }
 }

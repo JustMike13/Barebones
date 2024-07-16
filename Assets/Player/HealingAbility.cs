@@ -26,14 +26,16 @@ public class HealingAbility : Attack
         playerMana = GetComponent<PlayerMana>();
         playerHealth = GetComponent<Health>();
         healingAura.SetActive(false);
+        animator = characterManager.Animator;
     }
 
     private void Update()
     {
         float step = duration / steps;
         if (isHealing && Time.time - lastHeal >= healDelay 
-            && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull()) 
+            && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull())
         {
+            animator.SetBool("IsWalking", false);
             if (SetBusy())
             {
                 healingAura.SetActive(true);

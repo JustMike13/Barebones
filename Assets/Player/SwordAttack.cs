@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class SwordAttack : Attack
 {
-    [SerializeField]
-    bool parryIndicator;
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     protected bool oldIsAttacking;
@@ -39,22 +37,6 @@ public class SwordAttack : Attack
             NotBusy();
         }
         oldIsAttacking = isAttacking;
-    }
-
-    protected void ProcessParry()
-    {
-        if (parryWindowOn && !oldParryWindowOn)
-        {
-            parryWindow.x = Time.time;
-            parryWindow.y = Mathf.Infinity;
-            parryWindowOn = true;
-        }
-        else if (!parryWindowOn && oldParryWindowOn)
-        {
-            parryWindow.y = Time.time;
-            parryWindowOn = false;
-        }
-        oldParryWindowOn = parryWindowOn;
     }
 
     protected void OnTriggerEnter(Collider other)
