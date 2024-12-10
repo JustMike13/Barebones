@@ -23,14 +23,14 @@ public class SwordAttack : Attack
         // TODO: Move blocking to controller
         if (animator != null)
         {
-            if (controller.IsBlocking())
-            {
-                animator.SetBool("IsBlocking", true);
-            }
-            else
-            {
-                animator.SetBool("IsBlocking", false);
-            }
+            //if (controller.IsBlocking())
+            //{
+            //    animator.SetBool("IsBlocking", true);
+            //}
+            //else
+            //{
+            //    animator.SetBool("IsBlocking", false);
+            //}
         }
         if (oldIsAttacking && !isAttacking) 
         {
