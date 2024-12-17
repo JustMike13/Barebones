@@ -9,6 +9,7 @@ public class UIStatusBar : MonoBehaviour
     protected GameObject UIBar = null;
     [SerializeField]
     protected float maxValue;
+    [SerializeField]
     protected float currentValue;
 
     void Start()

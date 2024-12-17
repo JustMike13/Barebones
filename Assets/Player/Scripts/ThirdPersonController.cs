@@ -1,3 +1,4 @@
+using AdvancedController;
 using Cinemachine;
 using System;
 using System.Collections;
@@ -5,14 +6,15 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 using UnityEngine.InputSystem;
 
 public class ThirdPersonController : BaseContoller
 {
     // Inspector variables
     [Header("Object References")]
-    [SerializeField]
-    private CinemachineVirtualCamera mainCamera;
+    //[SerializeField]
+    //private CinemachineVirtualCamera mainCamera;
     [SerializeField]
     SwordAttack sword;
     [SerializeField]
@@ -21,6 +23,8 @@ public class ThirdPersonController : BaseContoller
     Transform characterModel;
     [SerializeField]
     AudioSource footsteps;
+    [SerializeField]
+    TurnTowardController turnController;
     [Header("Character values")]
     [SerializeField]
     private float playerSpeed = 10.0f;
@@ -44,6 +48,7 @@ public class ThirdPersonController : BaseContoller
     [SerializeField]
     private float maxCameraY = 4.5f;
 
+    private AdvancedController.PlayerController movementController;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -65,7 +70,8 @@ public class ThirdPersonController : BaseContoller
     // Start is called before the first frame update
     void Start()
     {
-        characterManager = GetComponent<CharacterManager>(); 
+        characterManager = GetComponent<CharacterManager>();
+        movementController = GetComponent<AdvancedController.PlayerController>();
         controller = GetComponent<CharacterController>();
         healingAbility = GetComponent<HealingAbility>();
         animator = characterManager.Animator;
@@ -77,15 +83,16 @@ public class ThirdPersonController : BaseContoller
     // Update is called once per frame
     void Update()
     {
-        if (menu.IsGameON())
-        {
-            ProcessMovement();
-            ProcessCameraRotation();
+        //if (menu.IsGameON())
+        //{
+            //ProcessMovement();
+            //ProcessCameraRotation();
             ProcessAttacking();
             ProcessBlocking();
             ProcessHealing();
-            ProcessRolling();
-        }
+            //ProcessRolling();
+        //}
+        movementController.SetAllowMovement(!(isStunned || IsBusy || isBlocking));
     }
 
     private void ProcessMovement()
@@ -169,26 +176,27 @@ public class ThirdPersonController : BaseContoller
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    private void ProcessCameraRotation()
-    {
-        if (lockRotation)
-        {
-            return;
-        }
-        //camera rotation by mouse
-        float mouse = Input.GetAxis("Mouse X");
-        transform.Rotate(new Vector3(0, mouse * x_sensitivity, 0));
-        mouse = Input.GetAxis("Mouse Y");
-        //mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
-        Cinemachine3rdPersonFollow camera = mainCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
-        camera.ShoulderOffset.y = Mathf.Clamp(camera.ShoulderOffset.y - mouse * y_sensitivity, minCameraY, maxCameraY);
+    //private void ProcessCameraRotation()
+    //{
+    //    if (lockRotation)
+    //    {
+    //        return;
+    //    }
+    //    //camera rotation by mouse
+    //    float mouse = Input.GetAxis("Mouse X");
+    //    transform.Rotate(new Vector3(0, mouse * x_sensitivity, 0));
+    //    mouse = Input.GetAxis("Mouse Y");
+    //    //mainCamera.transform.Rotate(new Vector3(-mouse * sensitivity, 0, 0));
+    //    Cinemachine3rdPersonFollow camera = mainCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+    //    camera.ShoulderOffset.y = Mathf.Clamp(camera.ShoulderOffset.y - mouse * y_sensitivity, minCameraY, maxCameraY);
 
-    }
+    //}
     
     private void ProcessAttacking()
     {
         if (Input.GetButtonDown("Fire1") && !isBlocking)
         {
+            RotateCharacterToCamera();
             sword.UseAttack();
         }
     }
@@ -198,7 +206,8 @@ public class ThirdPersonController : BaseContoller
         bool oldIsBlocking = isBlocking;
         isBlocking = Input.GetKey(KeyCode.Mouse1) && !IsAttacking ? true : false;
         if (isBlocking && !oldIsBlocking) 
-        { 
+        {
+            RotateCharacterToCamera();
             StartBlockingTime = Time.time;
         }
         else if (!isBlocking && oldIsBlocking)
@@ -270,5 +279,10 @@ public class ThirdPersonController : BaseContoller
         {
             healingAbility.Interrupt();
         }
+    }
+
+    void RotateCharacterToCamera()
+    {
+        turnController.RotateToCamera();
     }
 }

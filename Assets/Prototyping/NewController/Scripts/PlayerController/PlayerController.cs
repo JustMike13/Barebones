@@ -13,6 +13,8 @@ namespace AdvancedController {
         Transform tr;
         PlayerMover mover;
         CeilingDetector ceilingDetector;
+        //TODO animator controller
+        [SerializeField] Animator animator; 
         
         bool jumpKeyIsPressed;    // Tracks whether the jump key is currently being held down by the player
         bool jumpKeyWasPressed;   // Indicates if the jump key was pressed since the last reset, used to detect jump initiation
@@ -39,8 +41,10 @@ namespace AdvancedController {
         
         public event Action<Vector3> OnJump = delegate { };
         public event Action<Vector3> OnLand = delegate { };
+        [SerializeField] bool allowMovement;
         #endregion
         
+        public void SetAllowMovement(bool movement) => allowMovement = movement;
         bool IsGrounded() => stateMachine.CurrentState is GroundedState or SlidingState;
         public Vector3 GetVelocity() => savedVelocity;
         public Vector3 GetMomentum() => useLocalMomentum ? tr.localToWorldMatrix * momentum : momentum;
@@ -124,6 +128,8 @@ namespace AdvancedController {
             
             mover.SetExtendSensorRange(IsGrounded());
             mover.SetVelocity(velocity);
+            //TODO animator controller
+            animator.SetBool("IsWalking", velocity != Vector3.zero);
             
             savedVelocity = velocity;
             savedMovementVelocity = CalculateMovementVelocity();
@@ -136,6 +142,8 @@ namespace AdvancedController {
         Vector3 CalculateMovementVelocity() => CalculateMovementDirection() * movementSpeed;
 
         Vector3 CalculateMovementDirection() {
+            if (!allowMovement)
+                return Vector3.zero;
             Vector3 direction = cameraTransform == null 
                 ? tr.right * input.Direction.x + tr.forward * input.Direction.y 
                 : Vector3.ProjectOnPlane(cameraTransform.right, tr.up).normalized * input.Direction.x + 
