@@ -11,6 +11,8 @@ public class CharacterManager : MonoBehaviour
     CameraShake cameraShake;
     [SerializeField]
     List<Attack> attacks;
+    [SerializeField]
+    GameObject mesh = null;
     [SerializeField] bool HitsStopAttacks = false;
     public List<Attack> Attacks { get { return attacks; } }
     [SerializeField]
@@ -76,7 +78,7 @@ public class CharacterManager : MonoBehaviour
 
     private bool IsFacing(CharacterManager Opponent)
     {
-        return (Vector3.Angle(transform.forward, Opponent.transform.position - transform.position) < blockAngle);
+        return (Vector3.Angle(mesh.transform.forward, Opponent.transform.position - mesh.transform.position) < blockAngle);
     }
 
     public void Enable()

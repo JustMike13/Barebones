@@ -20,7 +20,7 @@ public class HealingAbility : Attack
     int steps = 10;
     Health playerHealth;
     int stepsCompleted = 0;
-
+    bool alreadyHealing = false;
     new void Start()
     {
         playerMana = GetComponent<PlayerMana>();
@@ -33,8 +33,9 @@ public class HealingAbility : Attack
     {
         float step = duration / steps;
         if (isHealing && Time.time - lastHeal >= healDelay 
-            && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull())
+            && (playerMana.IsAvailable(manaCost) || alreadyHealing) && !playerHealth.IsFull())
         {
+            alreadyHealing=true;
             animator.SetBool("IsWalking", false);
             if (SetBusy())
             {
@@ -57,6 +58,7 @@ public class HealingAbility : Attack
         }
         else
         {
+            alreadyHealing = false;
             NotBusy();
             healingAura.SetActive(false);
             lastUpdateTime = Time.time;

@@ -94,15 +94,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.0039525693
-    y: 0
+    x: 0
+    y: -0.005181347
     width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 1.949074
+  orthographic size: 2.6296296
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 0}
   attacks: []
+  mesh: {fileID: 2546681029870871042}
   HitsStopAttacks: 0
   parryIndicator: {fileID: 0}
   animator: {fileID: 3141450177703288115}
@@ -328,7 +329,7 @@ MonoBehaviour:
   currentValue: 0
   startingValue: 10
   hitBonus: 10
-  minMana: 20
+  minMana: 40
   StandardManaColor: {r: 0, g: 0.28873968, b: 1, a: 1}
   InsuficientManaColor: {r: 0, g: 0.88762283, b: 1, a: 1}
 --- !u!114 &7701470079811891129
@@ -345,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterManager: {fileID: 4498305112207131770}
   damage: 20
-  manaCost: 20
+  manaCost: 40
   range: {x: 0, y: 0}
   canBeBlocked: 0
   canBeParried: 0
@@ -488,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 2206206477742388858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0, y: 0, z: -3.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -560,8 +561,8 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.0039525693
-    y: 0
+    x: 0
+    y: -0.005181347
     width: 1
     height: 1
   near clip plane: 0.1
@@ -1830,12 +1831,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.1282581, y: 0.7332605, z: 0.023012862}
-  m_Center: {x: -0.09923717, y: 0.5250977, z: -0.033122916}
+  m_Size: {x: 0.12825812, y: 1.3689474, z: 0.023012856}
+  m_Center: {x: -0.09923626, y: 0.29032484, z: -0.03312315}
 --- !u!4 &5516464431767577620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8749401829834722328, guid: 87b8a2e2a446b2b408ddad82ef969ab4, type: 3}
