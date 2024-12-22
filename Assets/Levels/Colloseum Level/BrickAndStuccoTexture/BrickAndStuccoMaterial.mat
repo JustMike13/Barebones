@@ -97,9 +97,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ScaleX: 50.3
-    - _ScaleZ: 50.3
-    - _Seed: 0
+    - _ScaleX: 2.7859
+    - _ScaleZ: 0.4394
+    - _Seed: 4.75
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

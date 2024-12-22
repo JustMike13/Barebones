@@ -32,7 +32,6 @@ public class HealingAbility : Attack
     private void Update()
     {
         float step = duration / steps;
-        if (isHealing)
         if (isHealing && Time.time - lastHeal >= healDelay 
             && playerMana.IsAvailable(manaCost / steps) && !playerHealth.IsFull())
         {

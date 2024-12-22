@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BrickAndStuccoShader : MonoBehaviour
 {
-    [SerializeField] bool applyScale = false;
     void Start()
     {
         Material material = GetComponent<Renderer>().material;
@@ -15,11 +14,8 @@ public class BrickAndStuccoShader : MonoBehaviour
             + transform.rotation.x * transform.rotation.z;
         
         material.SetFloat("_Seed", seed);
-        if (applyScale )
-        {
-            material.SetFloat("_ScaleX", transform.localScale.x);
-            material.SetFloat("_ScaleZ", transform.localScale.z);
-        }
+        material.SetFloat("_ScaleX", transform.localScale.x);
+        material.SetFloat("_ScaleZ", transform.localScale.z);
     }
 
 }
