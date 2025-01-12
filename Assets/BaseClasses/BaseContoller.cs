@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseContoller : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public bool isStunned;
     public bool IsStunned { get { return isStunned; } }
     protected bool isBlocking;
@@ -19,7 +19,10 @@ public class BaseContoller : MonoBehaviour
     bool isBusy;
     public bool IsBusy { 
         get { return isBusy; } 
-        set { isBusy = value; } }
+        set { isBusy = value; }
+    }
+    [SerializeField]
+    float stunTime = 1f;
 
     protected bool isInvulnerable = false;
     public bool IsInvulnerable { get {  return isInvulnerable; } set {  IsInvulnerable = value; } }
@@ -41,7 +44,15 @@ public class BaseContoller : MonoBehaviour
             // TODO: Change this
             //animator.Play("Stunned");
             animator.Play("Interrupt");
+            animator.SetBool("IsWalking", false);
+            isStunned = true;
+            Invoke(nameof(StopStun), stunTime);
         }
+    }
+
+    private void StopStun()
+    {
+        isStunned = false;
     }
 
     public virtual void LookAtPlayer() { }

@@ -52,7 +52,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public float Hit(CharacterManager Opponent, float Damage, bool CanBeBlocked = false)
+    public float Hit(CharacterManager Opponent, float Damage, bool CanBeBlocked = false, Vector3 position = default(Vector3))
     {
         if (controller != null && !controller.IsInvulnerable)
         {
@@ -61,7 +61,8 @@ public class CharacterManager : MonoBehaviour
                 animator.SetTrigger("Hit");
             }
             bool blocked = controller.IsBlocking();
-            if (blocked && CanBeBlocked && IsFacing(Opponent))
+            bool isFacingAttack = position == default(Vector3) ? IsFacing(Opponent.gameObject) : IsFacing(position);
+            if (blocked && CanBeBlocked && isFacingAttack)
             {
                 return controller.StartBlockingTime;
             }
@@ -76,9 +77,14 @@ public class CharacterManager : MonoBehaviour
         return Attack.FAIL;
     }
 
-    private bool IsFacing(CharacterManager Opponent)
+    private bool IsFacing(GameObject Opponent)
     {
-        return (Vector3.Angle(mesh.transform.forward, Opponent.transform.position - mesh.transform.position) < blockAngle);
+        return IsFacing(Opponent.transform.position);
+    }
+
+    private bool IsFacing(Vector3 Position)
+    {
+        return (Vector3.Angle(mesh.transform.forward, Position - mesh.transform.position) < blockAngle);
     }
 
     public void Enable()

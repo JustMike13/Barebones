@@ -36,6 +36,10 @@ public class Attack : MonoBehaviour
 
     protected void Start() 
     {
+        if (characterManager == null)
+        {
+            Debug.LogError("Missing Character Manager");
+        }
         animator = characterManager.Animator;
         playerMana = characterManager.PlayerMana;
     }
