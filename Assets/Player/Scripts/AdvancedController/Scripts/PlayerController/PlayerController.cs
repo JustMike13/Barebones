@@ -14,7 +14,8 @@ namespace AdvancedController {
         PlayerMover mover;
         CeilingDetector ceilingDetector;
         //TODO animator controller
-        [SerializeField] Animator animator; 
+        [SerializeField] Animator animator;
+        [SerializeField] AudioSource footsteps;
         
         bool jumpKeyIsPressed;    // Tracks whether the jump key is currently being held down by the player
         bool jumpKeyWasPressed;   // Indicates if the jump key was pressed since the last reset, used to detect jump initiation
@@ -130,7 +131,8 @@ namespace AdvancedController {
             mover.SetVelocity(velocity);
             //TODO animator controller
             animator.SetBool("IsWalking", velocity != Vector3.zero);
-            
+            footsteps.enabled = velocity != Vector3.zero;
+
             savedVelocity = velocity;
             savedMovementVelocity = CalculateMovementVelocity();
             

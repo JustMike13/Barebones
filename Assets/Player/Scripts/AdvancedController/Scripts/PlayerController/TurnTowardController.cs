@@ -5,7 +5,7 @@ using UnityUtils;
 namespace AdvancedController {
     public class TurnTowardController : MonoBehaviour {
         [SerializeField] PlayerController controller;
-        [SerializeField] GameObject camera;
+        [SerializeField] GameObject playerCamera;
         public float turnSpeed = 50f;
         //public float actionTurnSpeed = 1000f;
 
@@ -26,7 +26,7 @@ namespace AdvancedController {
 
             if (rotateToCamera)
             {
-                vector = camera.transform.forward;
+                vector = playerCamera.transform.forward;
                 speed = 100;
                 rotateToCamera = false;
             }

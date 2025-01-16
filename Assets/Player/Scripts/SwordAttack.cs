@@ -9,6 +9,7 @@ public class SwordAttack : Attack
     public bool isAttacking;
     public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
     protected bool oldIsAttacking;
+    [SerializeField] AudioSource hitSound;
 
     private new void Start()
     {
@@ -42,11 +43,12 @@ public class SwordAttack : Attack
     protected void OnTriggerEnter(Collider other)
     {
         CharacterManager enemy = other.GetComponent<CharacterManager>();
-        if (enemy == null || enemy == characterManager)
+        if (enemy == null || enemy == characterManager || collisions.Contains(other))
         {
             return;
         }
 
+        collisions.Add(other);
         float hit = enemy.Hit(characterManager, damage, canBeBlocked);
         
         if (hit != SUCCESS && CorrectParry(hit))
@@ -56,6 +58,10 @@ public class SwordAttack : Attack
 
         if (hit == SUCCESS)
         {
+            if (hitSound != null)
+            {
+                hitSound.Play();
+            }
             characterManager.AddHitBonus();
             characterManager.CameraShakeOnAttack();
         }

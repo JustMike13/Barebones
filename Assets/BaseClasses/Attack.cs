@@ -33,6 +33,7 @@ public class Attack : MonoBehaviour
     protected bool oldParryWindowOn;
     protected PlayerMana playerMana;
     protected bool setBusyByThis = false;
+    protected List<Collider> collisions;
 
     protected void Start() 
     {
@@ -42,6 +43,7 @@ public class Attack : MonoBehaviour
         }
         animator = characterManager.Animator;
         playerMana = characterManager.PlayerMana;
+        collisions = new List<Collider>();
     }
     private void Update()
     {
@@ -93,6 +95,7 @@ public class Attack : MonoBehaviour
             controller.IsAttacking = false;
             setBusyByThis = false;
             controller.ResetTimeSinceAttack();
+            ClearCollisionList();
         }
     }
 
@@ -115,5 +118,13 @@ public class Attack : MonoBehaviour
             characterManager.ParryIndicatorOn(parryWindowOn); 
         }
         oldParryWindowOn = parryWindowOn;
+    }
+
+    protected void ClearCollisionList()
+    {
+        if (collisions != null)
+        {
+            collisions.Clear();
+        }
     }
 }

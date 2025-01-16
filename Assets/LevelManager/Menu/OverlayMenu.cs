@@ -64,7 +64,7 @@ public class OverlayMenu : MonoBehaviour
         Time.timeScale = onoff ? 1 : 0;
         Cursor.visible = !onoff;
         Cursor.lockState = onoff ? CursorLockMode.Locked : CursorLockMode.None;
-        player.LockRotation = !onoff;
+        //player.LockRotation = !onoff;
     }
 
     public bool IsGameON()

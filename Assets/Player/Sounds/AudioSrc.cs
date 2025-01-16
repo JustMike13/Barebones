@@ -7,20 +7,27 @@ public class AudioSrc : MonoBehaviour
 {
     [SerializeField]
     public string audioSourceName;
+    AudioSource audioSource;
     bool isPlaying = false;
     public bool IsPlaying {  get { return isPlaying; } }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void Play()
     {
         if (!isPlaying)
         {
-            GetComponent<AudioSource>().Play();
+            audioSource.Play();
             isPlaying = true;
         }
     }
 
     public void Stop()
     {
-        GetComponent<AudioSource>().Stop();
+        audioSource.Stop();
+        isPlaying = false;
     }
 }

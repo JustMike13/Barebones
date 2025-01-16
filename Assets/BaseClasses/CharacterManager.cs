@@ -14,6 +14,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     GameObject mesh = null;
     [SerializeField] bool HitsStopAttacks = false;
+    [SerializeField] AudioSource shieldBlockSound;
     public List<Attack> Attacks { get { return attacks; } }
     [SerializeField]
     GameObject parryIndicator;
@@ -56,6 +57,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (controller != null && !controller.IsInvulnerable)
         {
+            // TODO: Send CanBeBlocked to animator, if false play the hit animation, not blocking animation
             if (!controller.IsAttacking || HitsStopAttacks)
             {
                 animator.SetTrigger("Hit");
@@ -64,6 +66,10 @@ public class CharacterManager : MonoBehaviour
             bool isFacingAttack = position == default(Vector3) ? IsFacing(Opponent.gameObject) : IsFacing(position);
             if (blocked && CanBeBlocked && isFacingAttack)
             {
+                if (shieldBlockSound != null)
+                {
+                    shieldBlockSound.Play();
+                }
                 return controller.StartBlockingTime;
             }
             if (health != null)
@@ -145,7 +151,6 @@ public class CharacterManager : MonoBehaviour
     {
         if ( parryIndicator != null )
         {
-            Debug.Log("Parry indicator: " + parryWindowOn);
             parryIndicator.SetActive(parryWindowOn);
         }
     }

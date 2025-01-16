@@ -10,6 +10,8 @@ public class HealingAbility : Attack
     GameObject healingAura;
     [SerializeField]
     float duration;
+    [SerializeField] AudioSource healingSound;
+    [SerializeField] AudioSrc healingChargeSound;
     bool isHealing = false;
     public bool IsHealing { get { return isHealing; } set { isHealing = value; } }
     float lastUpdateTime;
@@ -23,10 +25,9 @@ public class HealingAbility : Attack
     bool alreadyHealing = false;
     new void Start()
     {
-        playerMana = GetComponent<PlayerMana>();
+        base.Start();
         playerHealth = GetComponent<Health>();
         healingAura.SetActive(false);
-        animator = characterManager.Animator;
     }
 
     private void Update()
@@ -44,20 +45,24 @@ public class HealingAbility : Attack
                 {
                     if (Time.time - lastUpdateTime >= step)
                     {
+                        healingChargeSound.Play();
                         playerMana.ConsumeMana(manaCost / steps);
                         lastUpdateTime = Time.time;
                         stepsCompleted += 1;
                     }
                 }
-                if (stepsCompleted == steps) 
+                if (stepsCompleted == steps)
                 {
+                    healingChargeSound.Stop();
                     lastHeal = Time.time;
+                    healingSound.Play();
                     playerHealth.Refill(damage);
                 }
             }
         }
         else
         {
+            healingChargeSound.Stop();
             alreadyHealing = false;
             NotBusy();
             healingAura.SetActive(false);

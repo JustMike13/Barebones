@@ -15,7 +15,7 @@ public class FireballCasting : Attack
     [SerializeField]
     float duration;
 
-    void Start()
+    new void Start()
     {
         base.Start();
     }
