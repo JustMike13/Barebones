@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IntroController : MonoBehaviour
 {
+    [SerializeField] AudioSource Gunshot1;
+    [SerializeField] AudioSource Gunshot2;
+    [SerializeField] AudioSource GunshotOpponent;
     Animator myAnimator;
     // Start is called before the first frame update
     void Start()
@@ -33,5 +36,20 @@ public class IntroController : MonoBehaviour
         {
             myAnimator.SetFloat("Speed", 1f);
         }
+    }
+
+    public void Play1()
+    {
+        Gunshot1.Play();
+    }
+
+    public void Play2()
+    {
+        Gunshot2.Play();
+    }
+
+    public void PlayOpp()
+    {
+        GunshotOpponent.Play();
     }
 }
