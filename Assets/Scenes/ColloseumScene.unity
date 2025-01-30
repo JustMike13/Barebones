@@ -207,8 +207,8 @@ RenderTexture:
     Hash: 00000000000000000000000000000000
   m_IsAlphaChannelOptional: 0
   serializedVersion: 6
-  m_Width: 341
-  m_Height: 194
+  m_Width: 452
+  m_Height: 208
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 90
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   - {fileID: 308994220}
   storedCamRotation: {x: 0, y: 0, z: 0, w: 0}
   storedPixelMultiplier: 0
-  origOrthoSize: 2.6388888
+  origOrthoSize: 2.8379629
 --- !u!4 &286608038
 Transform:
   m_ObjectHideFlags: 0
@@ -1627,7 +1627,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 998.95}
-  m_LocalScale: {x: 2.6388888, y: 2.6388888, z: 2.6388888}
+  m_LocalScale: {x: 2.8379629, y: 2.8379629, z: 2.8379629}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1466017319}
@@ -5373,7 +5373,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5894737, y: 2.0421052, z: 0}
+  m_LocalScale: {x: 4.424144, y: 2.0358891, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 286608038}
@@ -5496,7 +5496,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5894737, y: 2.0421052, z: 0}
+  m_LocalScale: {x: 4.424144, y: 2.0358891, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1900532184}
@@ -5850,8 +5850,8 @@ RenderTexture:
     Hash: 00000000000000000000000000000000
   m_IsAlphaChannelOptional: 0
   serializedVersion: 6
-  m_Width: 341
-  m_Height: 194
+  m_Width: 452
+  m_Height: 208
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 90
@@ -6484,7 +6484,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 999}
-  m_LocalScale: {x: 2.6388888, y: 2.6388888, z: 2.6388888}
+  m_LocalScale: {x: 2.8379629, y: 2.8379629, z: 2.8379629}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1522262044}
@@ -7159,7 +7159,7 @@ RectTransform:
   m_GameObject: {fileID: 2079326340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.087147, y: 1.087147, z: 1.087147}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8865534501456777597}
@@ -7371,7 +7371,7 @@ Camera:
   far clip plane: 1000
   field of view: 40
   orthographic: 1
-  orthographic size: 2.6388888
+  orthographic size: 2.8379629
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -7491,9 +7491,9 @@ MonoBehaviour:
   graphicsFormat: 8
   pixelMultiplier: 3
   ditherRepeatSize: 2
-  lastScreenSize: {x: 1013, y: 570}
-  screenSize: {x: 1013, y: 570}
-  renderTextureSize: {x: 341, y: 194}
+  lastScreenSize: {x: 1346, y: 613}
+  screenSize: {x: 1346, y: 613}
+  renderTextureSize: {x: 452, y: 208}
   screenHeight: 1080
   uPixelatorCam: {fileID: 261395170351316450}
   autoDetectCameras: 0
@@ -7816,11 +7816,11 @@ PrefabInstance:
       objectReference: {fileID: 1609891652}
     - target: {fileID: 1876231078747121229, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: orthographic size
-      value: 2.6388888
+      value: 2.8379629
       objectReference: {fileID: 0}
     - target: {fileID: 1876231078747121229, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: -0.0029325513
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1876231078747121229, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -7856,7 +7856,7 @@ PrefabInstance:
       objectReference: {fileID: 1355811956}
     - target: {fileID: 6451537101099261806, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: -0.0029325513
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6451537101099261806, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -7874,7 +7874,21 @@ PrefabInstance:
       propertyPath: healingChargeSound
       value: 
       objectReference: {fileID: 1030491383}
-    m_RemovedComponents: []
+    - target: {fileID: 8851303484507502799, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: points.Array.data[1].x
+      value: -0.072
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851303484507502799, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: points.Array.data[1].y
+      value: 0.311
+      objectReference: {fileID: 0}
+    - target: {fileID: 8851303484507502799, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: points.Array.data[1].z
+      value: -0.032
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8851303484507502799, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+    - {fileID: 4766900314082940437, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4894108168625533093, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
