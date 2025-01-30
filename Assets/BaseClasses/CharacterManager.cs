@@ -8,8 +8,6 @@ public class CharacterManager : MonoBehaviour
     // Inspector variables
     [Header("Object References")]
     [SerializeField]
-    CameraShake cameraShake;
-    [SerializeField]
     List<Attack> attacks;
     [SerializeField]
     GameObject mesh = null;
@@ -61,6 +59,7 @@ public class CharacterManager : MonoBehaviour
             if (!controller.IsAttacking || HitsStopAttacks)
             {
                 animator.SetTrigger("Hit");
+                CameraShake.Shake(0.2f, 0.3f);
             }
             bool blocked = controller.IsBlocking();
             bool isFacingAttack = position == default(Vector3) ? IsFacing(Opponent.gameObject) : IsFacing(position);
@@ -128,19 +127,13 @@ public class CharacterManager : MonoBehaviour
     public void CameraShakeOnAttack()
     {
         // TODO: Add SerializeField variables for this values;
-        if (cameraShake != null)
-        {
-            cameraShake.ShakeCamera(0.5f, 0.1f);
-        }
+        CameraShake.Shake(0.2f, 0.1f);
     }
 
     public void CameraShakeOnHit()
     {
         // TODO: Add SerializeField variables for this values;
-        if (cameraShake != null)
-        {
-            cameraShake.ShakeCamera(2f, 0.1f);
-        }
+        CameraShake.Shake(0.3f, 0.1f);
     }
     public void MoveCharacter(Vector3 movement)
     {
