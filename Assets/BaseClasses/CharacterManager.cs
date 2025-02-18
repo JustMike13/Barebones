@@ -56,6 +56,7 @@ public class CharacterManager : MonoBehaviour
         if (controller != null && !controller.IsInvulnerable)
         {
             // TODO: Send CanBeBlocked to animator, if false play the hit animation, not blocking animation
+            animator.SetBool("CanBeBlocked", CanBeBlocked);
             if (!controller.IsAttacking || HitsStopAttacks)
             {
                 animator.SetTrigger("Hit");

@@ -277,6 +277,10 @@ public class ThirdPersonController : BaseContoller
         {
             healingAbility.Interrupt();
         }
+        if (sword.IsAttacking)
+        {
+            sword.Interrupt();
+        }
     }
 
     void RotateCharacterToCamera()

@@ -16,7 +16,8 @@ namespace AdvancedController {
         //TODO animator controller
         [SerializeField] Animator animator;
         [SerializeField] AudioSource footsteps;
-        
+        ThirdPersonController controller;
+
         bool jumpKeyIsPressed;    // Tracks whether the jump key is currently being held down by the player
         bool jumpKeyWasPressed;   // Indicates if the jump key was pressed since the last reset, used to detect jump initiation
         bool jumpKeyWasLetGo;     // Indicates if the jump key was released since it was last pressed, used to detect when to stop jumping
@@ -55,7 +56,8 @@ namespace AdvancedController {
             tr = transform;
             mover = GetComponent<PlayerMover>();
             ceilingDetector = GetComponent<CeilingDetector>();
-            
+            controller = GetComponent<ThirdPersonController>();
+
             jumpTimer = new CountdownTimer(jumpDuration);
             SetupStateMachine();
         }
@@ -121,6 +123,10 @@ namespace AdvancedController {
         void Update() => stateMachine.Update();
 
         void FixedUpdate() {
+            if (controller.IsBusy)
+            { 
+                return; 
+            }
             stateMachine.FixedUpdate();
             mover.CheckForGround();
             HandleMomentum();

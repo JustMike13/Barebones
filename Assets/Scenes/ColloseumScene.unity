@@ -2212,7 +2212,7 @@ Transform:
   m_GameObject: {fileID: 450367070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.12, y: 0, z: 13.21}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3798,6 +3798,10 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 9c8bb6f60da62184aacdf0004016fc0f, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151853974724965787, guid: 9c8bb6f60da62184aacdf0004016fc0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.24
       objectReference: {fileID: 0}
     - target: {fileID: 6280378038496969919, guid: 9c8bb6f60da62184aacdf0004016fc0f, type: 3}
       propertyPath: m_Layer
@@ -7489,7 +7493,7 @@ MonoBehaviour:
   graphicsFormat: 8
   pixelMultiplier: 3
   ditherRepeatSize: 2
-  lastScreenSize: {x: 1920, y: 888}
+  lastScreenSize: {x: 1369, y: 657}
   screenSize: {x: 1100, y: 538}
   renderTextureSize: {x: 370, y: 183}
   screenHeight: 1080
@@ -7782,7 +7786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732121136672088665, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.22
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1732121136672088665, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7818,7 +7822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1876231078747121229, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: orthographic size
-      value: 2.4907408
+      value: 2.824074
       objectReference: {fileID: 0}
     - target: {fileID: 1876231078747121229, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -7836,6 +7840,10 @@ PrefabInstance:
       propertyPath: footsteps
       value: 
       objectReference: {fileID: 1542579899}
+    - target: {fileID: 3168821127561767970, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4498305112207131770, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: shieldBlockSound
       value: 
@@ -7876,6 +7884,22 @@ PrefabInstance:
       propertyPath: UIBar
       value: 
       objectReference: {fileID: 864800563}
+    - target: {fileID: 7701470079811891129, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: steps
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701470079811891129, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: duration
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701470079811891129, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: manaCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7701470079811891129, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
+      propertyPath: canBeParried
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7701470079811891129, guid: c56f651b853d0054b99ad17ec22f8f5b, type: 3}
       propertyPath: healingSound
       value: 
