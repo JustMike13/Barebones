@@ -15,6 +15,7 @@ public class InputReader : ScriptableObject, IPlayerActions, IInputReader {
     public event UnityAction EnableMouseControlCamera = delegate { };
     public event UnityAction DisableMouseControlCamera = delegate { };
     public event UnityAction<bool> Jump = delegate { };
+    public event UnityAction<bool> Dodge = delegate { };
     public event UnityAction<bool> Dash = delegate { };
     public event UnityAction Attack = delegate { };
     public event UnityAction<RaycastHit> Click = delegate { };
@@ -91,6 +92,19 @@ public class InputReader : ScriptableObject, IPlayerActions, IInputReader {
                 break;
             case InputActionPhase.Canceled:
                 Jump.Invoke(false);
+                break;
+        }
+    }
+
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                Dodge.Invoke(true);
+                break;
+            case InputActionPhase.Canceled:
+                //Dodge.Invoke(false);
                 break;
         }
     }

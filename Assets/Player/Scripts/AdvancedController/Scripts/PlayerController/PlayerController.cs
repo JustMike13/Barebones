@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using ImprovedTimers;
 using UnityEngine;
 using UnityUtils;
@@ -33,6 +34,9 @@ namespace AdvancedController {
         public float slideGravity = 5f;
         public float slopeLimit = 30f;
         public bool useLocalMomentum;
+        [SerializeField] bool allowMovement;
+        [SerializeField] float dodgeSpeed = 2f;
+        [SerializeField] float rollDuration = 0;
         
         StateMachine stateMachine;
         CountdownTimer jumpTimer;
@@ -43,9 +47,12 @@ namespace AdvancedController {
         
         public event Action<Vector3> OnJump = delegate { };
         public event Action<Vector3> OnLand = delegate { };
-        [SerializeField] bool allowMovement;
         #endregion
-        
+        private bool isDodging = false;
+        private float velocityMult = 1f;
+        private Vector3 savedDirection;
+        private Vector3 lastKnownDirection;
+
         public void SetAllowMovement(bool movement) => allowMovement = movement;
         bool IsGrounded() => stateMachine.CurrentState is GroundedState or SlidingState;
         public Vector3 GetVelocity() => savedVelocity;
@@ -65,6 +72,8 @@ namespace AdvancedController {
         void Start() {
             input.EnablePlayerActions();
             input.Jump += HandleJumpKeyInput;
+            input.Dodge += HandleDodge;
+            lastKnownDirection = Vector3.forward;
         }
 
         void HandleJumpKeyInput(bool isButtonPressed) {
@@ -78,6 +87,32 @@ namespace AdvancedController {
             }
             
             jumpKeyIsPressed = isButtonPressed;
+        }
+        void HandleDodge(bool isButtonPressed)
+        {
+            if (isButtonPressed)
+            {
+                isDodging = true;
+                animator.SetBool("IsRolling", true);
+                animator.SetTrigger("Dodge");
+                StartCoroutine(CallMethodAfterDelay(rollDuration, false));
+                GetComponent<CapsuleCollider>().enabled = false;
+            }
+            else
+            {
+                animator.SetBool("IsRolling", false);
+                isDodging = false;
+                GetComponent<CapsuleCollider>().enabled = true;
+            }
+        }
+
+        IEnumerator CallMethodAfterDelay(float delay, bool parameter)
+        {
+            // Wait for the specified delay
+            yield return new WaitForSeconds(delay);
+
+            // Call the method with the parameter
+            HandleDodge(parameter);
         }
 
         void SetupStateMachine() {
@@ -134,7 +169,7 @@ namespace AdvancedController {
             velocity += useLocalMomentum ? tr.localToWorldMatrix * momentum : momentum;
             
             mover.SetExtendSensorRange(IsGrounded());
-            mover.SetVelocity(velocity);
+            mover.SetVelocity(velocity * velocityMult);
             //TODO animator controller
             animator.SetBool("IsWalking", velocity != Vector3.zero);
             footsteps.enabled = velocity != Vector3.zero;
@@ -146,18 +181,31 @@ namespace AdvancedController {
             
             if (ceilingDetector != null) ceilingDetector.Reset();
         }
-        
-        Vector3 CalculateMovementVelocity() => CalculateMovementDirection() * movementSpeed;
+
+        Vector3 CalculateMovementVelocity()
+        {
+            float speed = isDodging ? dodgeSpeed : movementSpeed;
+            return CalculateMovementDirection() * speed;
+        }
 
         Vector3 CalculateMovementDirection() {
             if (!allowMovement)
                 return Vector3.zero;
-            Vector3 direction = cameraTransform == null 
-                ? tr.right * input.Direction.x + tr.forward * input.Direction.y 
-                : Vector3.ProjectOnPlane(cameraTransform.right, tr.up).normalized * input.Direction.x + 
-                  Vector3.ProjectOnPlane(cameraTransform.forward, tr.up).normalized * input.Direction.y;
-            
-            return direction.magnitude > 1f ? direction.normalized : direction;
+            if (isDodging)
+            {
+                return lastKnownDirection;
+            }
+            Vector3 direction = cameraTransform == null
+                ? tr.right * input.Direction.x + tr.forward * input.Direction.y
+                : Vector3.ProjectOnPlane(cameraTransform.right, tr.up).normalized * input.Direction.x +
+                    Vector3.ProjectOnPlane(cameraTransform.forward, tr.up).normalized * input.Direction.y;
+
+            savedDirection = direction.magnitude > 1f ? direction.normalized : direction;
+            if (savedDirection != Vector3.zero)
+            {
+                lastKnownDirection = savedDirection;
+            }
+            return savedDirection;
         }
 
         void HandleMomentum() {
