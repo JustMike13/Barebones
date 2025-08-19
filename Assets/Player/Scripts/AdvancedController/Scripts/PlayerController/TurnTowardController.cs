@@ -13,6 +13,8 @@ namespace AdvancedController {
         float currentYRotation;
         const float fallOffAngle = 90f;
         bool rotateToCamera = false;
+        bool rotateFast = false;
+        public bool fixRotation = false;
 
         void Start() {
             tr = transform;
@@ -21,8 +23,12 @@ namespace AdvancedController {
         }
 
         void LateUpdate() {
+            if (fixRotation)
+            {
+                return;
+            }
             Vector3 vector = controller.GetMovementVelocity();
-            float speed = Time.deltaTime * turnSpeed;
+            float speed = rotateFast ? turnSpeed : Time.deltaTime * turnSpeed;
 
             if (rotateToCamera)
             {
@@ -30,6 +36,7 @@ namespace AdvancedController {
                 speed = 100;
                 rotateToCamera = false;
             }
+
 
             Vector3 velocity = Vector3.ProjectOnPlane(vector, tr.parent.up);
             if (velocity.magnitude < 0.001f) return;
@@ -49,6 +56,11 @@ namespace AdvancedController {
         public void RotateToCamera()
         {
             rotateToCamera = true;
+        }
+
+        public void RotateFast(bool val)
+        {
+            fixRotation = val;
         }
     }
 }

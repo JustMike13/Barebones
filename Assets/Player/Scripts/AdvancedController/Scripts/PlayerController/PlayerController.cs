@@ -18,6 +18,8 @@ namespace AdvancedController {
         [SerializeField] Animator animator;
         [SerializeField] AudioSource footsteps;
         ThirdPersonController controller;
+        [SerializeField]
+        TurnTowardController turnController;
 
         bool jumpKeyIsPressed;    // Tracks whether the jump key is currently being held down by the player
         bool jumpKeyWasPressed;   // Indicates if the jump key was pressed since the last reset, used to detect jump initiation
@@ -97,11 +99,13 @@ namespace AdvancedController {
                 animator.SetTrigger("Dodge");
                 StartCoroutine(CallMethodAfterDelay(rollDuration, false));
                 GetComponent<CapsuleCollider>().enabled = false;
+                turnController.RotateFast(true);
             }
             else
             {
                 animator.SetBool("IsRolling", false);
                 isDodging = false;
+                turnController.RotateFast(false);
                 GetComponent<CapsuleCollider>().enabled = true;
             }
         }
@@ -158,7 +162,7 @@ namespace AdvancedController {
         void Update() => stateMachine.Update();
 
         void FixedUpdate() {
-            if (controller.IsBusy)
+            if (controller.IsBusy && !isDodging)
             { 
                 return; 
             }
